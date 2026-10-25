@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PonteLink</title>
-<style>
-body{font-family:Arial;background:#0d1117;color:white;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}
-.card{background:#161b22;padding:30px;border-radius:20px;text-align:center;width:90%;max-width:380px}
-.link{display:block;background:#238636;color:white;padding:15px;margin:12px 0;border-radius:12px;text-decoration:none;font-weight:bold}
-</style>
+<title>PONTELINKS</title>
+<meta property="og:title" content="PONTELINKS">
+<meta property="og:description" content="Crie pontes inteligentes para o X - via Leonardo">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pontelinks.com">
+<meta name="twitter:card" content="summary_large_image">
 </head>
-<body>
-<div class="card">
-<h1>PonteLink</h1>
-<p>Meus links</p>
-<a class="link" href="https://instagram.com">Instagram</a>
-<a class="link" href="https://wa.me/5599999999999">WhatsApp</a>
+<body style="font-family:Arial;background:#0f1419;color:white;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0">
+<div style="background:#161b22;padding:30px;border-radius:20px;text-align:center;width:90%;max-width:380px">
+<h1>PONTELINKS</h1>
+<p style="color:#8899a6">via Leonardo</p>
+<input id="l" placeholder="Cole link YouTube, etc" style="width:100%;padding:15px;border-radius:12px;border:1px solid #333;background:#0d1117;color:white;box-sizing:border-box">
+<button onclick="document.getElementById('r').innerText=location.origin+'/p/'+btoa(document.getElementById('l').value)" style="width:100%;padding:15px;margin-top:12px;background:#238636;color:white;border:0;border-radius:12px;font-weight:bold">GERAR PONTE</button>
+<div id="r" style="margin-top:15px;word-break:break-all;color:#1aff60"></div>
 </div>
 </body>
 </html>
