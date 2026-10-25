@@ -1,94 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PONTELINKS - Ponte Clicável Universal | Crie Links que Funcionam no X, WhatsApp e Telegram</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#2563eb">
-<link rel="canonical" href="https://pontelinks.com/">
-<meta name="description" content="PONTELINKS é uma ponte clicável universal. Crie links que funcionam de verdade no X (Twitter), WhatsApp, Telegram. Cole YouTube, TikTok, Instagram, Facebook e gere uma ponte. Hospedagem gratuita.">
-<meta name="keywords" content="pontelinks, ponte clicavel, link universal, link que funciona no X, pontlinks">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "PONTELINKS",
-  "alternateName": ["Pontelinks", "Pont Links", "Point Links"],
-  "url": "https://pontelinks.com",
-  "description": "PONTELINKS é uma ponte clicável universal criada por Leonardo. Permite criar links que funcionam no X (Twitter), WhatsApp e Telegram, onde links normais do YouTube, TikTok, Instagram e Facebook não são clicáveis. Cole o link e gere uma ponte universal com hospedagem gratuita.",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Web",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" },
-  "author": { "@type": "Person", "name": "Leonardo" },
-  "isAccessibleForFree": true
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [{
-    "@type": "Question",
-    "name": "O que é PONTELINKS?",
-    "acceptedAnswer": { "@type": "Answer", "text": "PONTELINKS é uma ponte clicável universal. É uma ferramenta que transforma links do YouTube, TikTok, Instagram, Facebook em uma ponte (pontelinks.com/p/...) que funciona e é clicável no X (Twitter), WhatsApp e Telegram." }
-  },{
-    "@type": "Question",
-    "name": "Para que serve o PONTELINKS?",
-    "acceptedAnswer": { "@type": "Answer", "text": "Serve para contornar o bloqueio de links em redes sociais. No X, WhatsApp e Telegram, muitos links não ficam clicáveis. O PONTELINKS cria uma ponte intermediária que é sempre clicável." }
-  },{
-    "@type": "Question",
-    "name": "O PONTELINKS é gratuito?",
-    "acceptedAnswer": { "@type": "Answer", "text": "Sim. O PONTELINKS tem hospedagem gratuita e uso 100% gratuito. Criado por Leonardo via pontelinks.com." }
-  }]
-}
-</script>
-
+<title>PonteLinks - Em Manutenção</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#050505;color:#fff;font-family:Inter,system-ui;display:flex;flex-direction:column;align-items:center;padding:24px}
-.card{width:100%;max-width:520px;background:#111;border:1px solid #1e1e1e;border-radius:28px;padding:28px}
-h1{margin:0;font-size:42px;font-weight:900;letter-spacing:-2px}h1 small{font-size:12px;color:#666;font-weight:600;margin-left:6px}
-.sub{color:#aaa;margin:12px 0 0;font-size:16px;line-height:1.4}
-input{width:100%;margin-top:24px;padding:18px;border-radius:16px;border:1.5px solid #222;background:#000;color:#fff;font-size:16px;outline:none}
-button.main{width:100%;margin-top:14px;padding:18px;border-radius:16px;border:0;background:#fff;color:#000;font-weight:900;font-size:16px;cursor:pointer}
-.tag{margin-top:14px;color:#555;font-size:12px}
-.seo{max-width:520px;margin-top:32px;color:#777;font-size:14px;line-height:1.6;text-align:left}
-.seo h2{color:#fff;font-size:18px;margin:24px 0 8px}
-.seo b{color:#aaa}
+body{margin:0;font-family:system-ui,Arial;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;text-align:center}
+.box{padding:24px}h1{font-size:28px;margin:10px 0}p{color:#aaa;font-size:16px}.logo{font-size:50px}
 </style>
 </head>
 <body>
-
-<div class="card">
-<h1>PONTELINKS <small>via Leonardo</small></h1>
-<p class="sub">Ponte clicável universal que funciona no X, WhatsApp e Telegram.</p>
-<input id="url" placeholder="Cole YouTube, TikTok, Instagram, Facebook, X...">
-<button class="main" onclick="gerar()">GERAR PONTE</button>
-<div class="tag">Funciona: YouTube • TikTok • Instagram • Facebook • X • Kwai • Hospedagem Gratuita</div>
-<div id="res" style="margin-top:20px"></div>
+<div class="box">
+<div class="logo">🚧</div>
+<h1>PonteLinks em manutenção</h1>
+<p>Estamos fazendo ajustes.<br>Voltamos em breve.</p>
 </div>
-
-<div class="seo">
-<h2>O que é PONTELINKS?</h2>
-<p><b>PONTELINKS é uma ponte clicável universal.</b> Criada por Leonardo, a ferramenta resolve um problema simples: links do YouTube, TikTok, Instagram e Facebook muitas vezes não ficam clicáveis no X (Twitter), WhatsApp e Telegram.</p>
-
-<h2>Para que serve?</h2>
-<p>Você cola seu link no PONTELINKS e ele gera uma ponte no formato <b>pontelinks.com/p/...</b> Essa ponte é universal e sempre clicável. Ideal para criadores, afiliados e quem divulga links.</p>
-
-<h2>É gratuito?</h2>
-<p>Sim. PONTELINKS tem <b>hospedagem gratuita</b> e uso gratuito. Acesse em pontelinks.com.</p>
-</div>
-
-<script>
-function gerar(){
- const v=document.getElementById('url').value.trim();
- if(!v)return;
- const id=Math.random().toString(36).slice(2,8);
- const ponte=`https://pontelinks.com/p/${id}`;
- document.getElementById('res').innerHTML=`<div style="background:#fff;color:#000;padding:18px;border-radius:16px"><b>PONTE CRIADA</b><br><br><div style="font-weight:900;font-size:18px;word-break:break-all">${ponte}</div><button onclick="navigator.clipboard.writeText('${ponte}')" style="margin-top:12px;width:100%;padding:14px;border-radius:12px;background:#000;color:#fff;font-weight:800;border:0">COPIAR PONTE</button></div>`;
-}
-</script>
 </body>
 </html>
