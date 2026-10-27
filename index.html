@@ -3,40 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ponte Links ®</title>
+<title>Ponte Links ® - pontelinks.com</title>
+<style>
+/* FUNDO FIXO 40% - PARADO ENQUANTO TEXTO ROLA */
+.fundo-fixo {
+ position: fixed;
+ top:0; left:0; right:0; bottom:0;
+ pointer-events:none;
+ z-index:0;
+ opacity:0.4;
+}
+.fundo-fixo .arv {
+ position:absolute;
+ width:140px; height:140px;
+ background:url('logo.png') no-repeat center / contain;
+}
+</style>
 </head>
 <body style="margin:0; background:#8f8f8f; font-family:Arial; display:flex; justify-content:center;">
-<div style="width:100%; max-width:420px; background:#fff; min-height:100vh; border:3px solid #000; border-radius:22px; margin:10px; padding:20px; box-sizing:border-box; text-align:center;">
 
-<!-- CORREÇÃO: SUA ÁRVORE + SEU TEXTO QUE VOCÊ QUER QUE FIQUE -->
-<div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-top:10px;">
-<img src="logo.png" style="width:52px; height:52px; border-radius:10px; background:#000;">
-<h1 style="margin:0; font-size:28px; font-weight:900;">Ponte Links ®</h1>
+<!-- 4 ARVORES GRANDES 40% FIXAS - ESQUERDA/DIREITA, 3-4 DE CIMA A BAIXO -->
+<div class="fundo-fixo">
+<div class="arv" style="left:5%; top:10%;"></div>
+<div class="arv" style="right:5%; top:25%;"></div>
+<div class="arv" style="left:8%; top:50%;"></div>
+<div class="arv" style="right:8%; top:70%;"></div>
 </div>
-<p style="margin:5px 0 20px 0; font-size:16px; color:#555;">pontelinks.com</p>
 
-<p style="font-size:19px; margin:0 0 22px 0;">Encurta seu link grande em link pequeno</p>
+<div style="position:relative; z-index:1; width:100%; max-width:420px; background:rgba(255,255,255,0.92); min-height:100vh; border:3px solid #000; border-radius:22px; margin:10px; padding:20px; box-sizing:border-box; text-align:center;">
 
+<!-- LOGO TOPO 100% NORMAL - SEM TRANSPARENCIA -->
+<div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+<img src="logo.png" style="width:62px; height:62px; border-radius:12px; background:#000; object-fit:contain; opacity:1;">
+<div style="text-align:left; line-height:1;"><div style="font-size:26px; font-weight:900;">Ponte Links ®</div><div style="font-size:14px; color:#555;">pontelinks.com</div></div>
+</div>
+
+<p style="font-size:19px; margin:14px 0 18px 0;">Encurta seu link grande em link pequeno</p>
 <input id="linkGrande" type="text" placeholder="Cole seu link grande aqui" style="width:100%; padding:18px; border-radius:16px; border:2.5px solid #000; font-size:16px; box-sizing:border-box;">
-
 <button onclick="gerar()" style="width:100%; margin-top:14px; padding:18px; border-radius:16px; background:#000; color:#d4af37; border:2.5px solid #d4af37; font-weight:900; font-size:17px;">✨ GERAR PONTE LINKS</button>
+<div id="resultado" style="margin-top:18px; background:#fff9c4; border:3px dashed #d4af37; border-radius:16px; padding:18px; font-weight:900; min-height:60px; display:flex; align-items:center; justify-content:center;">SEU LINK PONTIFICADO VAI APARECER AQUI</div>
 
-<div id="resultado" style="margin-top:18px; background:#fff9c4; border:3px dashed #d4af37; border-radius:16px; padding:18px; font-weight:900;">SEU LINK PONTIFICADO VAI APARECER AQUI<br>Caixinha VERDE com botão 📋 COPIAR</div>
+<div style="margin-top:18px; background:#f7f7f7; border:2px solid #e0e0e0; border-radius:16px; padding:14px; font-size:13.5px;">
+Mesmo que a sua hospedagem seja sempre gratuita, considere fazer uma contribuição mensal, se estiver ao seu alcance.<br>
+<a href="#" style="color:#000; font-weight:700;">Contribuir com qualquer valor</a>
+</div>
 
-<div style="margin-top:18px; background:#000; color:#d4af37; border-radius:30px; padding:12px; font-size:14px;">🛡️ Cloudflare de Segurança Ativo - Protegido por Cloudflare®</div>
+<div style="margin-top:12px; background:#000; color:#d4af37; border-radius:30px; padding:12px; font-size:13px;">🛡️ Cloudflare de Segurança Ativo - Protegido por Cloudflare®</div>
 
-<div style="margin-top:20px;">📊 Estatísticas<br>
-<div style="background:#f1f1f1; border-radius:18px; padding:14px; margin:10px auto; width:210px;"><b style="font-size:32px;">1.2k</b><br>Links pontificados</div>
-<div style="background:#f1f1f1; border-radius:18px; padding:14px; margin:10px auto; width:210px;"><b style="font-size:32px;">8.5k</b><br>Cliques totais</div>
+<div style="margin-top:20px;">
+<div style="font-size:18px; font-weight:700;">📊 Estatísticas</div>
+<div style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
+<div style="background:#f1f1f1; border-radius:18px; padding:12px; width:100px;"><b style="font-size:22px;">1.2k</b><br>Links</div>
+<div style="background:#f1f1f1; border-radius:18px; padding:12px; width:100px;"><b style="font-size:22px;">8.5k</b><br>Cliques</div>
+</div>
 </div>
 
 </div>
 <script>
 function gerar(){
-let l=document.getElementById('linkGrande').value;
+let l=document.getElementById('linkGrande').value.trim();
 if(!l){alert('Cole um link');return;}
+if(!l.startsWith('http')) l='https://'+l;
 let c='pontelinks.com/'+Math.random().toString(36).substring(2,7);
-document.getElementById('resultado').innerHTML='<div style="background:#d4edda; padding:12px; border-radius:12px;">'+c+'<br><button onclick="navigator.clipboard.writeText(\''+c+'\')" style="margin-top:8px; padding:8px 14px; border-radius:8px; background:#000; color:#fff;">📋 COPIAR</button></div>';
+document.getElementById('resultado').innerHTML='<div style="background:#d4edda; border-radius:12px; padding:12px; width:100%;"><div style="word-break:break-all;">'+c+'</div><div style="display:flex; gap:8px; justify-content:center; margin-top:10px;"><button onclick="navigator.clipboard.writeText(\''+c+'\')" style="padding:8px 14px; border-radius:8px; background:#000; color:#fff; border:none;">📋 COPIAR</button><button onclick="let b=new Blob([\''+c+'\'],{type:\'text/plain\'});let a=document.createElement(\'a\');a.href=URL.createObjectURL(b);a.download=\'pontelinks.txt\';a.click()" style="padding:8px 14px; border-radius:8px; background:#fff; border:1.5px solid #000;">⬇️ BAIXAR</button></div></div>';
 }
 </script>
 </body>
