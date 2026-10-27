@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ponte Links • pontelinks.com</title>
+<title>Ponte Links - pontelinks.com</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2563eb">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#f5f5ef;font-family:Arial,sans-serif;min-height:100vh}
+body{background:#F5F5Ef;font-family:Arial,sans-serif;min-height:100vh}
 body::before{
 content:'';
 position:fixed;inset:0;
-background-image:url('./img/arvore.png');
+background-image:url('./img/icon-512.png');
 background-repeat:repeat-y;
 background-position:center 70px;
 background-size:94% auto;
@@ -20,50 +20,48 @@ opacity:0.40;
 pointer-events:none;
 z-index:0;
 }
-.page{max-width:680px;margin:0 auto;background:rgba(255,255,255,0.88);min-height:100vh;position:relative;z-index:1}
+.page{max-width:600px;margin:0 auto;background:rgba(255,255,255,0.80);min-height:100vh;position:relative;z-index:1}
 .topo{background:#0e0e0e;color:#d4af37;padding:14px;text-align:center;font-weight:900}
-.hero{padding:28px 18px;text-align:center}
-.box{margin:20px;background:#fff;border:2px solid #16a34a;border-radius:14px;padding:16px}
-input{width:100%;padding:14px;border:2px solid #ccc;border-radius:10px;font-size:16px}
-.btn{width:100%;margin-top:12px;padding:14px;border:0;border-radius:10px;font-weight:900;font-size:17px;cursor:pointer}
-.btn-pont{background:#16a34a;color:#fff}
-.btn-app{background:#111;color:#d4af37}
-.btn-pix{background:#d4af37;color:#111}
-.result{margin-top:14px;padding:12px;background:#dcfce7;border:2px solid #16a34a;border-radius:10px;display:none}
+.hero{padding:20px 18px;text-align:center}
+.box{background:#fff;border:1px solid #ddd;border-radius:12px;padding:16px;margin-top:16px;text-align:left}
+.box label{font-weight:bold;font-size:14px;display:block;margin-bottom:6px}
+.box textarea{width:100%;min-height:90px;border:1px solid #ccc;border-radius:8px;padding:10px;font-size:14px}
+.box button{width:100%;margin-top:10px;background:#0e0e0e;color:#d4af37;border:none;border-radius:8px;padding:12px;font-weight:900;cursor:pointer}
+.result{margin-top:12px;padding:10px;background:#f5f5ef;border-radius:8px;word-break:break-all;font-size:13px;display:none}
 </style>
 </head>
 <body>
 <div class="page">
-<div class="topo">PONTE LINKS • pontelinks.com</div>
+<div class="topo">PONTE LINKS - pontelinks.com</div>
 <div class="hero">
-<h1>Pontifique seu link</h1>
+<h2>Cole seu link aqui</h2>
+<p style="font-size:13px;margin-top:6px;">Cole o link longo e gere o link da ponte</p>
+
 <div class="box">
-<input id="url" placeholder="Cole seu link aqui">
-<button class="btn btn-pont" onclick="pontificar()">Pontificar link</button>
-<button class="btn btn-app" id="btnInstalar">📲 BAIXAR APLICATIVO</button>
-<button class="btn btn-pix" onclick="copiarPix()">💰 CONTRIBUIÇÃO / PIX</button>
-<div id="res" class="result"></div>
+<label for="link">Link para encurtar:</label>
+<textarea id="link" placeholder="Cole aqui ex: https://seusite.com.br/pagina..."></textarea>
+<button onclick="gerar()">GERAR PONTE</button>
+<button onclick="desfazer()" style="background:#eee;color:#333;margin-top:8px;">DESFAZER / LIMPAR</button>
+<div id="saida" class="result"></div>
+</div>
+
 </div>
 </div>
-</div>
+
 <script>
-let deferredPrompt=null;
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e});
-document.getElementById('btnInstalar').addEventListener('click',async()=>{
- if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null}
- else{alert('No Chrome: 3 pontinhos > Instalar app')}
-});
-function pontificar(){
- const v=document.getElementById('url').value.trim();
- if(!v)return alert('Cole um link');
- const slug=v.split('/').pop().substring(0,14).replace(/[^a-zA-Z0-9]/g,'')||'meulink';
- document.getElementById('res').style.display='block';
- document.getElementById('res').innerHTML=`<b>pontelinks.com/${slug}</b><br><br><button onclick="navigator.clipboard.writeText('https://www.pontelinks.com/${slug}');alert('Copiado!')" style="padding:10px;background:#16a34a;color:#fff;border:0;border-radius:8px;font-weight:900">📋 COPIAR</button>`;
+function gerar(){
+  var v = document.getElementById('link').value.trim();
+  if(!v){ alert('Cole um link primeiro'); return; }
+  var s = document.getElementById('saida');
+  s.style.display='block';
+  s.innerHTML = 'Seu Ponte Link pronto:<br><br><b>https://pontelinks.com/?url=' + encodeURIComponent(v) + '</b><br><br>Copiado!';
+  navigator.clipboard.writeText('https://pontelinks.com/?url=' + encodeURIComponent(v));
 }
-function copiarPix(){
- const chave='SEU-PIX-AQUI';
- navigator.clipboard.writeText(chave);
- alert('Pix copiado: '+chave);
+function desfazer(){
+  document.getElementById('link').value='';
+  var s = document.getElementById('saida');
+  s.style.display='none';
+  s.innerHTML='';
 }
 </script>
 </body>
