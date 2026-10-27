@@ -6,85 +6,31 @@
 <title>Ponte Links ® • pontelinks.com</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000 url('img/logo.png') no-repeat center center fixed;background-size:cover;font-family:Inter,sans-serif;min-height:100vh;padding:12px}
-.wrap{max-width:900px;margin:12px auto;background:rgba(255,255,255,0.75);border-radius:16px;overflow:hidden;box-shadow:0 0 50px rgba(201,168,76,.5);border:2px solid #c9a84c}
-.topbar{height:38px;background:rgba(241,242,244,0.85);display:flex;align-items:center;padding:0 14px;gap:8px}
+body{
+ background:#000 url('img/logo.png') no-repeat center center fixed;
+ background-size:cover;
+ font-family:Inter,sans-serif;
+ min-height:100vh;
+ padding:12px
+}
+/* FUNDO GERAL 60% BRANCO / 40% TRANSPARENTE - ÁRVORE APARECE */
+.wrap{
+ max-width:900px;
+ margin:12px auto;
+ background:rgba(255,255,255,0.60);
+ border-radius:16px;
+ overflow:hidden;
+ box-shadow:0 0 50px rgba(201,168,76,.5);
+ border:2px solid #c9a84c
+}
+.topbar{height:38px;background:rgba(241,242,244,0.90);display:flex;align-items:center;padding:0 14px;gap:8px}
 .dot{width:10px;height:10px;border-radius:50%}.d1{background:#ff5f57}.d2{background:#ffbd2e}.d3{background:#28ca42}
 .url{flex:1;text-align:center;color:#6b7280;font-size:12px}
-.header{padding:12px 28px;font-weight:700;background:rgba(0,0,0,0.88);color:#c9a84c}
-.hero{text-align:center;padding:28px 28px 20px;background:rgba(255,255,255,0.65)}
+.header{padding:12px 28px;font-weight:700;background:rgba(0,0,0,0.92);color:#c9a84c}
+/* HERO COM FUNDO MAIS SÓLIDO PRA LEITURA FÁCIL */
+.hero{text-align:center;padding:28px 28px 20px;background:rgba(255,255,255,0.88)}
 .hero h1{font-size:32px;font-weight:900;color:#000}
-.hero p{color:#333;margin-top:8px;font-weight:600}
+.hero p{color:#111;margin-top:8px;font-weight:600}
 .input-row{display:flex;gap:10px;justify-content:center;margin:22px 0;flex-wrap:wrap}
-.input-row input{width:420px;max-width:100%;padding:14px;border:2px solid #111;border-radius:8px;background:rgba(255,255,255,0.95)}
-.btn{background:#111;color:#c9a84c;border:2px solid #c9a84c;padding:14px 28px;border-radius:8px;font-weight:800;cursor:pointer}
-.placeholder{margin:16px auto 0;max-width:560px;border:3px dashed #c9a84c;background:rgba(255,251,200,0.9);padding:14px;border-radius:10px;font-weight:800;text-align:center}
-.success{margin:12px auto;background:#16a34a;color:#fff;padding:10px 18px;border-radius:20px;display:none;font-weight:700}
-.result{padding:0 28px 18px;display:none;background:transparent}
-.card{border:3px solid #16a34a;border-radius:12px;padding:16px;background:rgba(240,253,244,0.95)}
-.short-box{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;background:#fff;padding:10px;border-radius:8px;border:2px solid #bbf7d0}
-.copyBtn{background:#16a34a;color:#fff;border:none;padding:10px 18px;border-radius:6px;font-weight:800;cursor:pointer}
-.sec{padding:18px 28px;border-top:1px solid rgba(0,0,0,0.08);background:rgba(255,255,255,0.72)}
-.badge{display:flex;gap:10px;background:rgba(0,0,0,0.9);color:#c9a84c;border:2px solid #c9a84c;padding:12px;border-radius:8px;font-size:12px;font-weight:700}
-.stats{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}.stat{flex:1;min-width:100px;background:rgba(249,250,251,0.95);border:1px solid #e5e7eb;border-radius:10px;padding:14px;text-align:center}.stat b{font-size:22px;display:block}
-.about{background:rgba(248,250,252,0.95);border:1px solid #e2e8f0;border-radius:12px;padding:16px;line-height:1.7;font-size:13px}
-.about h4{margin:10px 0 3px;font-weight:800}
-.contrib{background:rgba(255,251,235,0.95);border:2px solid #fde68a;padding:12px;border-radius:8px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.appBtn{background:#111;color:#c9a84c;border:1px solid #c9a84c;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700}
-.feedback{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}.feedback button{padding:8px 14px;border-radius:20px;border:1px solid #e5e7eb;background:#fff;cursor:pointer;font-size:12px}
-.footer-mark{text-align:center;padding:22px 0 12px;font-size:11px;letter-spacing:3px;color:#c9a84c;background:rgba(0,0,0,0.9)}
-</style>
-</head>
-<body>
-<div class="wrap">
-<div class="topbar"><div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div><div class="url">🔒 https://pontelinks.com</div></div>
-<div class="header">🔗 Ponte Links ® • pontelinks.com</div>
-<div class="hero">
-<h1>Pontifique seu link com o mundo</h1>
-<p>Clique aqui para pontificar seu link</p>
-<div class="input-row">
-<input id="urlInput" placeholder="Cole seu link aqui">
-<button class="btn" onclick="pontificar()">Pontificar link</button>
-</div>
-<div class="placeholder">👇 SEU LINK PONTIFICADO VAI APARECER AQUI<br>Caixinha VERDE com botão 📋 COPIAR</div>
-<div id="successMsg" class="success">✓ Link pontificado! Copiado!</div>
-</div>
-<div id="resultArea" class="result">
-<div class="card">
-<b>🌐 Link Original</b><br><span id="origUrl" style="color:#6b7280;font-size:12px;word-break:break-all"></span>
-<div class="short-box">
-<div><b>🔗 Seu Link Curto:</b><br><span id="shortUrl" style="color:#16a34a;font-weight:800;font-size:16px"></span></div>
-<button class="copyBtn" onclick="copiar()">📋 Copiar</button>
-</div>
-</div>
-</div>
-<div class="sec"><div class="badge">✅ Cloudflare de Segurança Ativo — Protegido por Cloudflare® • Árvore de circuito original</div></div>
-<div class="sec"><h3 style="font-size:14px;margin-bottom:10px">📊 Estatísticas</h3><div class="stats"><div class="stat"><b>1.2k</b> Links pontificados</div><div class="stat"><b>8.5k</b> Cliques totais</div><div class="stat"><b>98%</b> Disponibilidade</div></div></div>
-<div class="sec"><h3 style="font-size:15px;margin-bottom:10px">📖 SOBRE - Como usar cada tecla</h3><div class="about"><p><b>O que é Ponte Links?</b> Encurta seu link grande em link pequeno</p><h4>1. Cole seu link</h4><p>Cole YouTube, Instagram, etc no campo branco.</p><h4>2. Pontificar link</h4><p>Botão preto com dourado. Clica pra gerar.</p><h4>3. Onde aparece?</h4><p>No espaço amarelo tracejado - vai aparecer VERDE com botão COPIAR.</p><h4>4. Estatísticas, Pix, App, Gostou/Não gostou/Fake</h4><p>Tudo explicadinho.</p></div></div>
-<div class="sec"><div class="contrib"><div><b>💛 Contribuição para manter a página</b></div><a href="#" class="appBtn">Contribuir via Pix</a></div></div>
-<div class="sec"><h3 style="font-size:14px">📱 App</h3><a href="#" class="appBtn" style="margin-top:8px">Abrir App Ponte Links</a></div>
-<div class="sec"><h3 style="font-size:14px">O que achou?</h3><div class="feedback"><button>👍 Gostou</button><button>👎 Não gostou</button><button>🚩 Fake</button></div></div>
-<div class="footer-mark">PONTE LINKS® • pontelinks.com • COM SUA ÁRVORE ORIGINAL</div>
-</div>
-<script>
-let ultimo='';
-async function pontificar(){
-let url=document.getElementById('urlInput').value.trim();
-if(!url){alert('Cole seu link');return}
-if(!url.startsWith('http')) url='https://'+url;
-try{
-const r=await fetch('/api/shorten',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url})});
-const d=await r.json();
-if(!r.ok) throw new Error(d.error);
-document.getElementById('origUrl').textContent=url;
-ultimo='https://pontelinks.com/'+d.slug;
-document.getElementById('shortUrl').textContent=ultimo;
-document.getElementById('successMsg').style.display='inline-flex';
-document.getElementById('resultArea').style.display='block';
-navigator.clipboard.writeText(ultimo);
-}catch(e){alert('Erro: '+e.message)}
-}
-function copiar(){if(!ultimo)return;navigator.clipboard.writeText(ultimo);alert('Copiado: '+ultimo)}
-</script>
-</body>
-</html>
+.input-row input{width:420px;max-width:100%;padding:14px;border:2px solid #111;border-radius:8px;background:#ffffff;outline:none}
+.btn{background:#111
