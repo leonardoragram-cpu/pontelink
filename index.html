@@ -3,60 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ponte Links • pontelinks.com</title>
+<title>Ponte Links ® - pontelinks.com</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./img/icon-512.png">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#f9f7f0;font-family:Arial,sans-serif}
-body::before{
- content:"";
- position:fixed;inset:0;
- background-image:url('./img/icon-512.png');
- background-repeat:repeat-y;
- background-position:center 80px;
- background-size:94% auto;
- opacity:0.40;
- pointer-events:none;
- z-index:0;
-}
-.page{max-width:600px;margin:0 auto;position:relative;z-index:1}
-.topo{background:#111;color:#d4af37;padding:12px;text-align:center;font-weight:900}
-.hero{padding:20px 16px;text-align:center}
-.hero h1{font-size:34px;line-height:1.1}
-.input{width:100%;padding:14px;border:2px solid #111;border-radius:12px;margin-top:16px;font-size:16px}
-.btn-preto-dourado{width:180px;margin:14px auto 0;background:#111;color:#d4af37;border:2px solid #d4af37;border-radius:10px;padding:12px;font-weight:900;display:block}
-.box-amarelo{border:2px dashed #d4af37;background:#fff8c4;border-radius:12px;padding:14px;margin-top:16px;text-align:center;font-weight:800;font-size:14px}
-#resultado{margin-top:12px;background:#d1fae5;border:2px solid #16a34a;border-radius:12px;padding:12px;display:none;word-break:break-all}
-.badge{background:#111;color:#d4af37;border-radius:10px;padding:10px;margin-top:16px;font-size:12px;text-align:left}
-.card-stats{display:flex;gap:10px;margin-top:12px}
-.card-stats div{flex:1;background:white;border-radius:12px;padding:12px;text-align:center}
-.sobre{background:white;border-radius:12px;padding:14px;margin-top:16px;text-align:left;font-size:14px;line-height:1.4}
-.footer{background:#111;color:#d4af37;text-align:center;padding:14px;margin-top:20px;font-size:11px}
-.btn-pix{background:#111;color:#d4af37;border:none;border-radius:10px;padding:12px 18px;font-weight:900;margin-top:10px}
+body{font-family:Arial,sans-serif;background:#f9f7f0;margin:0;padding:16px;text-align:center;position:relative}
+body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background:url('./img/icon-512.png') center 120px no-repeat;background-size:380px;opacity:0.4;z-index:-1;pointer-events:none}
+.card{background:#fff;max-width:520px;margin:0 auto;padding:20px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.1);border:2px solid #111}
+.box-amarelo{background:#fff8c4;border:2px dashed #d4af37;padding:12px;border-radius:12px;margin-top:12px;font-weight:700}
+.badge{background:#111;color:#d4af37;padding:8px 12px;border-radius:20px;font-size:13px;margin-top:12px;display:inline-block}
+.card-stats{display:inline-block;background:#f1f1f1;border-radius:12px;padding:10px 16px;margin:6px;min-width:90px}
+.btn-preto{width:100%;padding:14px;background:#111;color:#d4af37;border:2px solid #d4af37;border-radius:12px;font-weight:900;margin-top:10px;cursor:pointer}
+.btn-pix{width:100%;padding:14px;background:#d4af37;color:#111;border:2px solid #111;border-radius:12px;font-weight:900;margin-top:10px;cursor:pointer}
+input{width:90%;padding:14px;border-radius:12px;border:2px solid #111;margin-top:10px}
+.footer{margin-top:18px;font-size:12px;opacity:.7}
 </style>
 </head>
 <body>
-<div class="page">
-<div class="topo">🔗 Ponte Links ® • pontelinks.com</div>
-<div class="hero">
-<h1>Pontifique seu link<br>com o mundo</h1>
-<p>Clique aqui para pontificar seu link</p>
-<input id="link" class="input" placeholder="Cole seu link aqui">
-<button class="btn-preto-dourado" onclick="gerar()">Pontificar link</button>
-<div class="box-amarelo" id="boxAviso">👉 SEU LINK PONTIFICADO VAI APARECER AQUI<br>Caixinha VERDE com botão 📋 COPIAR</div>
+
+<div class="card">
+<h1>🌳 Ponte Links ®</h1>
+<p>Encurta seu link grande em link pequeno</p>
+
+<input id="link" placeholder="Cole seu link grande aqui">
+<button class="btn-preto" onclick="gerar()">✨ GERAR PONTE LINKS</button>
+
+<div class="box-amarelo" id="boxAviso">SEU LINK PONTIFICADO VAI APARECER AQUI<br>Caixinha VERDE com botão 📋 COPIAR</div>
 <div id="resultado"></div>
-<div class="badge">✅ Cloudflare de Segurança Ativo — Protegido por Cloudflare® • Árvore de circuito original</div>
+
+<div class="badge">🛡️ Cloudflare de Segurança Ativo - Protegido por Cloudflare® - Árvore de circuito original</div>
+
 <div style="margin-top:14px">📊 Estatísticas</div>
-<div class="card-stats">
-<div><b style="font-size:22px">1.2k</b><br>Links pontificados</div>
-<div><b style="font-size:22px">8.5k</b><br>Cliques totais</div>
-</div>
+<div class="card-stats"><div><b style="font-size:22px">1.2k</b><br>Links pontificados</div></div>
+<div class="card-stats"><div><b style="font-size:22px">8.5k</b><br>Cliques totais</div></div>
 <div class="card-stats"><div><b style="font-size:22px">98%</b><br>Disponibilidade</div></div>
-<div class="sobre"><b>📖 SOBRE - Como usar cada tecla</b><br><br><b>O que é Ponte Links?</b> Encurta seu link grande em link pequeno<br><br><b>1. Cole seu link</b><br>Cole YouTube, Instagram, etc no campo branco.<br><br><b>2. Pontificar link</b><br>Botão preto com dourado. Clica pra gerar.<br><br><b>3. Onde aparece?</b><br>No espaço amarelo tracejado - vai aparecer VERDE com botão COPIAR.</div>
-<div class="box-amarelo" style="margin-top:16px;text-align:left">💛 Contribuição para manter a página<br><button class="btn-pix">Contribuir via Pix</button></div>
-<button class="btn-pix" style="margin-top:16px">Abrir App Ponte Links</button>
-<div class="footer">PONTE LINKS® • pontelinks.com • COM SUA ÁRVORE ORIGINAL</div>
+
+<div class="box-amarelo" style="margin-top:16px;text-align:left"><b>📖 SOBRE - Como usar cada tecla</b><br><br><b>O que é Ponte Links?</b> Encurta seu link grande em link pequeno<br><br><b>1.</b> Cole seu link<br><b>2.</b> Clique em GERAR<br><b>3.</b> Copie seu link pontificado</div>
+
+<div class="box-amarelo" style="margin-top:16px;text-align:left">💛 Contribuição para manter a página - CNPJ: 67.531.029/0001-70<br>
+<button class="btn-pix" onclick="location.href='./pix.html'">Contribuir via Pix - COPIAR CHAVE</button>
 </div>
+
+<button class="btn-pix" style="margin-top:16px" onclick="location.href='./app.html'">Abrir App Ponte Links</button>
+
+<div class="footer">PONTE LINKS ® • pontelinks.com • COM SUA ÁRVORE ORIGINAL</div>
 </div>
+
 <script>
 function gerar(){
  var v=document.getElementById('link').value.trim();
@@ -66,7 +58,7 @@ function gerar(){
  a.style.display='none';
  r.style.display='block';
  var u='https://pontelinks.com/?url='+encodeURIComponent(v);
- r.innerHTML='✅ SEU LINK PONTIFICADO:<br><br><b style="color:#16a34a">'+u+'</b><br><br><button onclick="navigator.clipboard.writeText(\''+u+'\');alert(\'Copiado!\')" style="background:#16a34a;color:white;border:none;border-radius:8px;padding:10px 16px;font-weight:900">📋 COPIAR</button>';
+ r.innerHTML='✅ SEU LINK PONTIFICADO:<br><br><b style="color:#16a34a">'+u+'</b><br><br><button onclick="navigator.clipboard.writeText(\''+u+'\');alert(\'Copiado!\')" style="padding:10px 18px;background:#16a34a;color:#fff;border-radius:8px;border:none;font-weight:900">📋 COPIAR</button>';
  navigator.clipboard.writeText(u);
 }
 </script>
