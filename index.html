@@ -5,37 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ponte Links ®</title>
 </head>
-<body style="margin:0; font-family:Arial; background:#f5f5f5; text-align:center; padding:20px;">
+<body style="margin:0; background:#8f8f8f; font-family:Arial; display:flex; justify-content:center;">
+<div style="width:100%; max-width:420px; background:#fff; min-height:100vh; border:3px solid #000; border-radius:22px; margin:10px; padding:20px; box-sizing:border-box; text-align:center;">
 
-<!-- LOGO OFICIAL - JÁ CONSERTADA -->
-<img src="logo.png" alt="Ponte Links" style="width:100%; max-width:320px; border-radius:16px; display:block; margin:0 auto 15px auto;">
+<!-- CORREÇÃO: SUA ÁRVORE + SEU TEXTO QUE VOCÊ QUER QUE FIQUE -->
+<div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-top:10px;">
+<img src="logo.png" style="width:52px; height:52px; border-radius:10px; background:#000;">
+<h1 style="margin:0; font-size:28px; font-weight:900;">Ponte Links ®</h1>
+</div>
+<p style="margin:5px 0 20px 0; font-size:16px; color:#555;">pontelinks.com</p>
 
-<h1 style="margin:0; font-size:24px;">Ponte Links ®</h1>
-<p style="color:#555; margin-top:5px;">pontelinks.com</p>
+<p style="font-size:19px; margin:0 0 22px 0;">Encurta seu link grande em link pequeno</p>
 
-<div style="max-width:400px; margin:20px auto;">
+<input id="linkGrande" type="text" placeholder="Cole seu link grande aqui" style="width:100%; padding:18px; border-radius:16px; border:2.5px solid #000; font-size:16px; box-sizing:border-box;">
 
-<input type="text" id="link" placeholder="Cole seu link grande aqui" style="width:100%; padding:16px; border-radius:20px; border:2px solid #000; box-sizing:border-box;">
+<button onclick="gerar()" style="width:100%; margin-top:14px; padding:18px; border-radius:16px; background:#000; color:#d4af37; border:2.5px solid #d4af37; font-weight:900; font-size:17px;">✨ GERAR PONTE LINKS</button>
 
-<button onclick="gerar()" style="width:100%; margin-top:15px; padding:16px; border-radius:20px; background:#000; color:#d4af37; border:2px solid #d4af37; font-weight:bold; font-size:16px;">✨ GERAR PONTE LINKS</button>
+<div id="resultado" style="margin-top:18px; background:#fff9c4; border:3px dashed #d4af37; border-radius:16px; padding:18px; font-weight:900;">SEU LINK PONTIFICADO VAI APARECER AQUI<br>Caixinha VERDE com botão 📋 COPIAR</div>
 
-<div style="margin-top:30px; display:grid; gap:12px;">
-<a href="#" style="display:block; padding:15px; background:white; border-radius:15px; text-decoration:none; color:black; border:1px solid #ddd; font-weight:bold;">Encurta seu link grande em link pequeno</a>
-<a href="#" style="display:block; padding:15px; background:white; border-radius:15px; text-decoration:none; color:black; border:1px solid #ddd; font-weight:bold;">Encurta com IA</a>
-<a href="#" style="display:block; padding:15px; background:white; border-radius:15px; text-decoration:none; color:black; border:1px solid #ddd; font-weight:bold;">Gerar Bio Link</a>
-<a href="#" style="display:block; padding:15px; background:white; border-radius:15px; text-decoration:none; color:black; border:1px solid #ddd; font-weight:bold;">Gerar Página Pro</a>
-<a href="#" style="display:block; padding:15px; background:white; border-radius:15px; text-decoration:none; color:black; border:1px solid #ddd; font-weight:bold;">Gerar QR Code Pro</a>
+<div style="margin-top:18px; background:#000; color:#d4af37; border-radius:30px; padding:12px; font-size:14px;">🛡️ Cloudflare de Segurança Ativo - Protegido por Cloudflare®</div>
+
+<div style="margin-top:20px;">📊 Estatísticas<br>
+<div style="background:#f1f1f1; border-radius:18px; padding:14px; margin:10px auto; width:210px;"><b style="font-size:32px;">1.2k</b><br>Links pontificados</div>
+<div style="background:#f1f1f1; border-radius:18px; padding:14px; margin:10px auto; width:210px;"><b style="font-size:32px;">8.5k</b><br>Cliques totais</div>
 </div>
 
 </div>
-
 <script>
 function gerar(){
-  let l = document.getElementById('link').value;
-  if(!l){ alert('Cole um link'); return; }
-  alert('Seu Ponte Link: pontelinks.com/' + Math.random().toString(36).substring(2,7));
+let l=document.getElementById('linkGrande').value;
+if(!l){alert('Cole um link');return;}
+let c='pontelinks.com/'+Math.random().toString(36).substring(2,7);
+document.getElementById('resultado').innerHTML='<div style="background:#d4edda; padding:12px; border-radius:12px;">'+c+'<br><button onclick="navigator.clipboard.writeText(\''+c+'\')" style="margin-top:8px; padding:8px 14px; border-radius:8px; background:#000; color:#fff;">📋 COPIAR</button></div>';
 }
 </script>
-
 </body>
 </html>
