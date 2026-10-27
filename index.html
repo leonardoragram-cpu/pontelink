@@ -1,34 +1,20 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ponte Links ® • pontelinks.com</title>
-<style>
-*{user-select:none;-webkit-user-select:none}
-body{margin:0;font-family:Arial;background:#f0f5e9;color:#333;text-align:center}
-.topo{position:fixed;top:0;left:0;right:0;background:#2e7d32;color:#fff;padding:10px;font-weight:bold;letter-spacing:1px;z-index:9999}
-.wrap{padding-top:70px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-left:15px;padding-right:15px}
-.card{background:#fff;padding:28px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.12);max-width:420px;width:100%;box-sizing:border-box}
-h1{color:#2e7d32;margin:10px 0 0}
-.sub{color:#666;font-size:14px;margin:5px 0 18px}
-.arvores{font-size:26px;opacity:.9;margin:10px 0;letter-spacing:8px}
-input{width:100%;padding:14px;border-radius:12px;border:2px solid #2e7d32;box-sizing:border-box;font-size:16px;outline:none}
-button{width:100%;margin-top:12px;background:#2e7d32;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:bold;font-size:16px;cursor:pointer}
-#res{margin-top:18px;word-break:break-all;font-size:15px;min-height:20px}
-small{color:#888}
-</style>
-<script>
-document.addEventListener('contextmenu',e=>e.preventDefault());
-document.addEventListener('keydown',e=>{if((e.ctrlKey&&(e.key=='c'||e.key=='u'||e.key=='s'))||e.key=='PrintScreen')e.preventDefault()});
-</script>
-</head>
-<body>
-<div class="topo">Ponte Links ® • pontelinks.com</div>
-<div class="wrap">
-<div class="card">
-<h1>Ponte Links ®</h1>
-<div class="sub">pontelinks.com • Encurtador oficial</div>
-<div class="arvores">🌳 🌳 🌳 🌳 🌳</div>
-<input id="url" type="url" placeholder="Cole seu link grande aqui...">
-<button onclick="pontificar()">PONTIFICAR MEU
+const HTML = `<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Ponte Links ® • pontelinks.com</title></head>
+<body style="margin:0;font-family:Arial;text-align:center;background:#f0f5e9">
+<div style="background:#2e7d32;color:#fff;padding:12px;font-weight:bold;position:fixed;top:0;left:0;right:0">Ponte Links ® • pontelinks.com</div>
+<div style="padding-top:80px">
+<h1 style="color:#2e7d32">Ponte Links ®</h1>
+<p>pontelinks.com no ar!</p>
+<p style="font-size:30px">🌳 🌳 🌳 🌳 🌳</p>
+<p style="color:#555">Site voltou! Agora vamos colocar o botão PONTIFICAR</p>
+</div>
+</body></html>`;
+
+export default {
+  async fetch(request) {
+    return new Response(HTML, {
+      headers: { "content-type": "text/html;charset=UTF-8" }
+    });
+  }
+}
