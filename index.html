@@ -6,35 +6,35 @@
 <title>Ponte Links • pontelinks.com</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#2d5016 url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80&auto=format&fit=crop') no-repeat center top;background-size:cover;background-attachment:fixed;font-family:Inter,sans-serif;color:#111;min-height:100vh}
-.wrap{max-width:900px;margin:0 auto;background:rgba(255,255,255,0.93);min-height:100vh;box-shadow:0 0 40px rgba(0,0,0,.3)}
-.topbar{height:38px;background:#f1f2f4;display:flex;align-items:center;padding:0 14px;gap:8px;border-bottom:1px solid #e5e7eb}
+body{background:#2d5016 url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80&auto=format&fit=crop') no-repeat center center fixed;background-size:cover;font-family:Inter,sans-serif;color:#111;min-height:100vh;padding:10px}
+.wrap{max-width:900px;margin:10px auto;background:rgba(255,251,235,0.78);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5);backdrop-filter:blur(2px)}
+.topbar{height:38px;background:rgba(241,242,244,0.85);display:flex;align-items:center;padding:0 14px;gap:8px;border-bottom:1px solid #e5e7eb}
 .dot{width:10px;height:10px;border-radius:50%}.d1{background:#ff5f57}.d2{background:#ffbd2e}.d3{background:#28ca42}
 .url{flex:1;max-width:360px;margin-left:20px;background:#e9eaed;border-radius:20px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#6b7280}
-.header{padding:12px 28px;font-weight:700;background:#fff}
-.hero{text-align:center;padding:28px 28px 20px;background:#fff}
+.header{padding:12px 28px;font-weight:700;background:rgba(255,251,235,0.85)}
+.hero{text-align:center;padding:28px 28px 20px;background:rgba(255,251,235,0.85)}
 .hero h1{font-size:32px;font-weight:900;line-height:1.1}
 .hero p{color:#6b7280;margin-top:8px;font-size:14px}
 .input-row{display:flex;gap:10px;justify-content:center;margin:22px 0;flex-wrap:wrap}
-.input-row input{width:420px;max-width:100%;padding:14px 16px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;background:#fff;outline:none}
+.input-row input{width:420px;max-width:100%;padding:14px 16px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;background:rgba(255,255,255,0.9);outline:none}
 .btn{background:#c1272d;color:#fff;border:none;padding:14px 28px;border-radius:8px;font-weight:700;cursor:pointer}
 .success{margin:12px auto;background:#16a34a;color:#fff;padding:10px 18px;border-radius:20px;display:inline-flex;gap:8px;font-weight:600;font-size:14px}
-.result{background:#fff;padding:0 28px 18px;display:none}
-.card{border:2px solid #16a34a;border-radius:12px;padding:16px;background:#f0fdf4}
-.short-box{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;background:#fff;padding:10px 12px;border-radius:8px;border:1px solid #bbf7d0}
+.result{background:transparent;padding:0 28px 18px;display:none}
+.card{border:2px solid #16a34a;border-radius:12px;padding:16px;background:rgba(240,253,244,0.9)}
+.short-box{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;background:rgba(255,255,255,0.9);padding:10px 12px;border-radius:8px;border:1px solid #bbf7d0}
 .copyBtn{background:#16a34a;color:#fff;border:none;padding:10px 18px;border-radius:6px;font-weight:700;cursor:pointer}
-.sec{padding:18px 28px;border-top:1px solid #f1f1f1;background:#fff}
-.badge{display:flex;align-items:center;gap:10px;background:#f0fdf4;border:1px solid #bbf7d0;padding:12px 14px;border-radius:8px;font-size:12px}
+.sec{padding:18px 28px;border-top:1px solid rgba(0,0,0,0.05);background:rgba(255,251,235,0.85)}
+.badge{display:flex;align-items:center;gap:10px;background:rgba(240,253,244,0.9);border:1px solid #bbf7d0;padding:12px 14px;border-radius:8px;font-size:12px}
 .stats{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
-.stat{flex:1;min-width:100px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px;text-align:center}
+.stat{flex:1;min-width:100px;background:rgba(249,250,251,0.9);border:1px solid #e5e7eb;border-radius:10px;padding:14px;text-align:center}
 .stat b{font-size:22px;display:block}
-.about{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;line-height:1.7;font-size:13px;color:#334155}
+.about{background:rgba(248,250,252,0.9);border:1px solid #e2e8f0;border-radius:12px;padding:16px;line-height:1.7;font-size:13px;color:#334155}
 .about h4{color:#111;margin:10px 0 3px;font-size:14px}
-.contrib{background:#fffbeb;border:1px solid #fde68a;padding:12px 14px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.contrib{background:rgba(255,251,235,0.9);border:1px solid #fde68a;padding:12px 14px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .appBtn{background:#111;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;display:inline-block}
 .feedback{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
-.feedback button{padding:8px 14px;border-radius:20px;border:1px solid #e5e7eb;background:#fff;cursor:pointer;font-size:12px}
-.footer-mark{text-align:center;padding:22px 0 12px;font-size:11px;letter-spacing:3px;color:#6b7280;background:#fff}
+.feedback button{padding:8px 14px;border-radius:20px;border:1px solid #e5e7eb;background:rgba(255,255,255,0.9);cursor:pointer;font-size:12px}
+.footer-mark{text-align:center;padding:22px 0 12px;font-size:11px;letter-spacing:3px;color:#6b7280;background:rgba(255,251,235,0.85)}
 </style>
 </head>
 <body>
@@ -65,46 +65,4 @@ body{background:#2d5016 url('https://images.unsplash.com/photo-1441974231531-c62
 <div class="stats">
 <div class="stat"><b>1.2k</b> Links pontificados</div>
 <div class="stat"><b>8.5k</b> Cliques totais</div>
-<div class="stat"><b>98%</b> Disponibilidade</div>
-</div>
-</div>
-<div class="sec">
-<h3 style="font-size:15px;margin-bottom:10px">📖 SOBRE - Como usar cada tecla</h3>
-<div class="about">
-<p><b>O que é Ponte Links?</b> Encurta seu link grande em link pequeno pontelinks.com/xxx</p>
-<h4>1. Cole seu link aqui:</h4><p>Cole seu link do YouTube, Instagram, etc nesse campo branco.</p>
-<h4>2. Pontificar link (vermelho):</h4><p>Clica aqui pra gerar. O link curto vai aparecer logo abaixo em VERDE com botão COPIAR.</p>
-<h4>3. 📊 Estatísticas:</h4><p>Mostra quantos links foram criados.</p>
-<h4>4. 💛 Contribuir via Pix:</h4><p>Ajuda a manter o site no ar.</p>
-<h4>5. 📱 Abrir App Ponte Links:</h4><p>Abre o aplicativo.</p>
-<h4>6. O que achou deste link?</h4><p>👍 Gostou = link bom | 👎 Não gostou = link ruim | 🚩 Fake = denuncia fake news</p>
-</div>
-</div>
-<div class="sec"><div class="contrib"><div><b>💛 Contribuição para manter a página em funcionamento</b></div><a href="#" class="appBtn">Contribuir via Pix</a></div></div>
-<div class="sec"><h3 style="font-size:14px">📱 Clique aqui para o aplicativo</h3><a href="#" class="appBtn" style="margin-top:8px">Abrir App Ponte Links</a></div>
-<div class="sec"><h3 style="font-size:14px">O que achou deste link?</h3><div class="feedback"><button>👍 Gostou</button><button>👎 Não gostou</button><button>🚩 Manipulação política / Fake</button></div></div>
-<div class="footer-mark">PONTE LINKS® • pontelinks.com</div>
-</div>
-<script>
-let ultimo='';
-async function pontificar(){
-let url=document.getElementById('urlInput').value.trim();
-if(!url){alert('Cole seu link primeiro');return}
-if(!url.startsWith('http')) url='https://'+url;
-try{
-const r=await fetch('/api/shorten',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url})});
-const d=await r.json();
-if(!r.ok) throw new Error(d.error);
-document.getElementById('origUrl').textContent=url;
-ultimo='https://pontelinks.com/'+d.slug;
-document.getElementById('shortUrl').textContent=ultimo;
-document.getElementById('successMsg').style.display='inline-flex';
-document.getElementById('resultArea').style.display='block';
-navigator.clipboard.writeText(ultimo);
-window.scrollTo({top:180,behavior:'smooth'});
-}catch(e){alert('Erro: '+e.message)}
-}
-function copiar(){if(!ultimo)return;navigator.clipboard.writeText(ultimo);alert('Copiado: '+ultimo)}
-</script>
-</body>
-</html>
+<div class="stat"><b>98%</b>
