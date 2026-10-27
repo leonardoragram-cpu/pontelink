@@ -1,36 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ponte Links ® • pontelinks.com</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
- background:#000 url('img/logo.png') no-repeat center center fixed;
- background-size:cover;
- font-family:Inter,sans-serif;
- min-height:100vh;
- padding:12px
+/* TRAVA SELEÇÃO E ARRASTAR */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
-/* FUNDO GERAL 60% BRANCO / 40% TRANSPARENTE - ÁRVORE APARECE */
-.wrap{
- max-width:900px;
- margin:12px auto;
- background:rgba(255,255,255,0.60);
- border-radius:16px;
- overflow:hidden;
- box-shadow:0 0 50px rgba(201,168,76,.5);
- border:2px solid #c9a84c
+input, textarea {
+  -webkit-user-select: text;
+  user-select: text;
 }
-.topbar{height:38px;background:rgba(241,242,244,0.90);display:flex;align-items:center;padding:0 14px;gap:8px}
-.dot{width:10px;height:10px;border-radius:50%}.d1{background:#ff5f57}.d2{background:#ffbd2e}.d3{background:#28ca42}
-.url{flex:1;text-align:center;color:#6b7280;font-size:12px}
-.header{padding:12px 28px;font-weight:700;background:rgba(0,0,0,0.92);color:#c9a84c}
-/* HERO COM FUNDO MAIS SÓLIDO PRA LEITURA FÁCIL */
-.hero{text-align:center;padding:28px 28px 20px;background:rgba(255,255,255,0.88)}
-.hero h1{font-size:32px;font-weight:900;color:#000}
-.hero p{color:#111;margin-top:8px;font-weight:600}
-.input-row{display:flex;gap:10px;justify-content:center;margin:22px 0;flex-wrap:wrap}
-.input-row input{width:420px;max-width:100%;padding:14px;border:2px solid #111;border-radius:8px;background:#ffffff;outline:none}
-.btn{background:#111
+</style>
+<script>
+// TRAVA BOTÃO DIREITO
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// TRAVA CTRL+C, CTRL+U, CTRL+P, F12
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && ['c','u','p','s'].includes(e.key.toLowerCase())) {
+    e.preventDefault();
+    alert('© Ponte Links ® - Conteúdo protegido');
+  }
+  if (e.key === 'PrintScreen' || e.keyCode === 44) {
+    e.preventDefault();
+    document.body.style.filter = 'blur(20px)';
+    setTimeout(()=> document.body.style.filter='none', 2000);
+    alert('© Ponte Links ® - Print bloqueado');
+  }
+  if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+    e.preventDefault();
+  }
+});
+
+// TRAVA ARRASTAR IMAGEM
+document.addEventListener('dragstart', e => e.preventDefault());
+</script>
