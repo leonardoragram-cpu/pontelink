@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -23,7 +23,7 @@ body{background:#060606;display:flex;justify-content:center;font-family:sans-ser
 .box-actions{margin-top:14px;display:flex;gap:10px;justify-content:center}
 .btn-mini{background:#111;color:#fff;border:1px solid #333;border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer}
 .box-white{margin-top:20px;background:#e8e8e8;border-radius:20px;padding:18px;color:#222;text-align:center}
-.btn{width:100%;height:54px;border-radius:28px;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;cursor:pointer}
+.btn{width:100%;height:54px;border-radius:28px;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;cursor:pointer;text-decoration:none}
 .btn-white{background:#fff;border:none;color:#222}
 .btn-black{background:#000;border:1.5px solid #c9b896;color:#c9b896;margin-top:14px}
 </style>
@@ -46,8 +46,8 @@ body{background:#060606;display:flex;justify-content:center;font-family:sans-ser
     </div>
   </div>
   <div class="box-white">Mesmo que a sua hospedagem seja sempre gratuita, considere fazer uma contribuição mensal, se estiver ao seu alcance.</div>
-  <button class="btn btn-white">💛 Contribuir via Pix</button>
-  <button class="btn btn-black">📥 Baixar Aplicativo</button>
+  <a href="./pix.html" class="btn btn-white">💛 Contribuir via Pix - 67.531.029/0001-70</a>
+  <button class="btn btn-black" id="btn-baixar">📥 Baixar Aplicativo</button>
 </div>
 <script>
 let finalLink="";
@@ -62,11 +62,27 @@ function gerar(){
 function copiar(){
   if(!finalLink){alert('Gere primeiro');return}
   navigator.clipboard.writeText(finalLink);
+  alert('✅ Copiado!');
 }
 function abrirPrevia(){
   if(!finalLink){alert('Gere primeiro');return}
-  alert('PRÉVIA:\\n\\n'+finalLink+'\\n\\n📊 Repercussão desta ponte:\\n👁️ 127 visualizações\\n🖱️ 83 cliques\\n📍 De onde veio: Facebook, X, Direto/WhatsApp');
+  alert('PRÉVIA DO SEU LINK:\\n\\n'+finalLink+'\\n\\nSeu link está pronto para compartilhar no mundo todo!');
 }
+// --- BAIXAR APP FUNCIONANDO ---
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+document.getElementById('btn-baixar').addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+  } else {
+    alert('Para instalar o PonteLinks no celular:\\n\\nNo Android: clica nos 3 pontinhos do Chrome > Instalar app\\nNo iPhone: clica no botão de compartilhar > Adicionar à Tela de Início');
+  }
+});
 </script>
 </body>
 </html>
