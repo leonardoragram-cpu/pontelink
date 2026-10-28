@@ -3,19 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ponte Links - Pontifique seu link para o mundo todo</title>
+<title>Ponte Links</title>
 <link rel="icon" href="img/icon-512.png">
-<link rel="manifest" href="manifest.json">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#080808;color:#fff;font-family:'Montserrat',sans-serif;min-height:100vh;position:relative;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background:url('img/icon-512.png') center bottom / 800px no-repeat;opacity:0.18;filter:sepia(1) saturate(2);z-index:0}
-.container{position:relative;z-index:2;max-width:420px;margin:0 auto;padding:12px 18px 30px}
-.top{display:flex;align-items:center;gap:10px;justify-content:center;margin:10px 0 18px}
-.top img{width:38px;height:38px}
-.top b{letter-spacing:2.5px;font-size:16px;color:#e8d8a0;font-weight:700}
-h1{text-align:center;font-size:28px;line-height:1.15;font-weight:600;margin-bottom:18px}
-.input-wrap{background:#f5f5f5;border-radius:24px;padding:12px 16px;display:flex;align-items:center;gap:8px}
-.input-wrap input{flex:1;border:none;outline:none;background:transparent;font-size:15px;color:#333}
-.input-wrap input
+body{background:#080808;color:#fff;font-family:Arial,sans-serif;text-align:center}
+.top{display:flex;gap:10px;align-items:center;justify-content:center;padding:14px}
+.top img{width:36px;height:36px}
+h1{font-size:26px;margin:14px 20px}
+.box{max-width:380px;margin:0 auto;padding:0 18px}
+.input{background:#f1f1f1;border-radius:24px;padding:12px 16px;display:flex;gap:8px}
+.input input{flex:1;border:0;outline:0;background:transparent;color:#333}
+.btn-gold{width:100%;margin-top:12px;padding:13px;border-radius:24px;border:1.5px solid #D4AF37;background:#000;color:#D4AF37;font-weight:700}
+.gold{background:linear-gradient(#d8c07a,#b89a3e);border-radius:16px;padding:16px;margin-top:14px;color:#000;font-weight:700;border:1.5px dashed #000}
+.white{background:#eee;color:#222;border-radius:16px;padding:14px;margin-top:14px;font-size:13px}
+.btn{width:100%;padding:12px;border-radius:22px;margin-top:10px;border:1px solid #D4AF37;background:#000;color:#D4AF37}
+.btn2{width:100%;padding:12px;border-radius:22px;margin-top:10px;background:#fff;color:#000;border:0}
+.stats{display:flex;gap:12px;margin-top:16px}
+.s{flex:1;background:#eee;color:#000;border-radius:16px;padding:16px}
+</style>
+</head>
+<body>
+<div class="top"><img src="img/icon-512.png"><b>PONTE LINKS</b></div>
+<h1>Pontifique seu link para o mundo todo</h1>
+<div class="box">
+<div class="input">🔗 <input id="u" placeholder="Cole seu link aqui"></div>
+<button class="btn-gold" onclick="g()">✨ GERAR PONTE LINKS</button>
+<div class="gold" id="out">SEU LINK PONTIFICADO VAI APARECER AQUI<div id="link" style="margin-top:10px;word-break:break-all;display:none"></div><br><button onclick="copyL()">COPIAR</button> <button onclick="pasteL()">COLAR</button></div>
+<div class="white">Mesmo que a sua hospedagem seja sempre gratuita, considere fazer uma contribuição mensal.<br><br><a href="#" onclick="pixM();return false">Contribuir com qualquer valor</a></div>
+<button class="btn" onclick="alert('Android: 3 pontos > Adicionar a tela inicial')">📥 Baixar Aplicativo</button>
+<button class="btn2" onclick="pixM()">💛 Contribuir via Pix</button>
+<button class="btn">🛡️ Cloudflare de Segurança Ativo</button>
+<div style="margin-top:16px">📊 Estatísticas</div>
+<div class="stats"><div class="s"><b>1.2k</b><br>Links</div><div class="s"><b>8.5k</b><br>Cliques</div></div>
+</div>
+<div id="m" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);align-items:center;justify-content:center;padding:20px"><div style="background:#111;border:1px solid #D4AF37;border-radius:16px;padding:20px;max-width:320px;width:100%"><h3 style="color:#D4AF37">Pix CNPJ</h3><div style="background:#000;padding:10px;margin:10px 0;border-radius:8px">67.531.029/0001-70</div><button class="btn-gold" onclick="navigator.clipboard.writeText('67.531.029/0001-70');alert('Copiado 67.531.029/0001-70')">COPIAR CHAVE</button><br><br><button class="btn" onclick="document.getElementById('m').style.display='none'">Fechar</button></div></div>
+<script>
+function g(){var u=document.getElementById('u').value.trim();if(!u){alert('Cole link');return;}var f='https://pontelinks.com/?url='+encodeURIComponent(u);document.getElementById('link').innerText=f;document.getElementById('link').style.display='block';}
+function copyL(){var t=document.getElementById('link').innerText;if(!t){alert('Gere link');return;}navigator.clipboard.writeText(t);alert('Copiado');}
+async function pasteL(){try{var t=await navigator.clipboard.readText();document.getElementById('u').value=t;}catch(e){alert('Cole com Ctrl+V');}}
+function pixM(){document.getElementById('m').style.display='flex';}
+</script>
+</body>
+</html>
