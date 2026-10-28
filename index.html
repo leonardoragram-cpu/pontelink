@@ -1,20 +1,51 @@
-<!-- PIX SECTION - ADICIONA ONDE ESTAVA "Contribuir via Pix" -->
-<div style="background:#111;border:1px solid #d4af37;padding:20px;border-radius:20px;max-width:500px;margin:20px auto">
-  <h3 style="color:#d4af37">💛 Apoie o Ponte Links</h3>
-  <p style="font-size:14px">Chave CNPJ (Pix):</p>
-  <div style="background:#000;padding:12px;border-radius:10px;font-family:monospace;display:flex;justify-content:space-between;align-items:center">
-    <span id="pixKey">67.531.029/0001-70</span>
-    <button onclick="copiarPix()" style="background:#d4af37;border:none;padding:8px 15px;border-radius:20px;font-weight:bold;cursor:pointer">📋 COPIAR</button>
-  </div>
-  <p style="font-size:12px;margin-top:10px;color:#aaa">Titular: Ponte Links • CNPJ: 67.531.029/0001-70</p>
-  <div id="qrcode" style="margin:15px auto;background:#fff;padding:10px;width:180px;border-radius:10px"></div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PONTE LINKS - Pontifique seu link</title>
+<style>
+body{background:#0a0a0a;color:#fff;font-family:Arial;text-align:center;padding:20px}
+input{width:90%;max-width:500px;padding:15px;border-radius:30px;border:none}
+.btn{background:#d4af37;color:#000;padding:12px 30px;border-radius:30px;font-weight:bold;border:none;margin:10px;cursor:pointer}
+.box{border:2px dashed #d4af37;background:#222;padding:20px;border-radius:20px;max-width:500px;margin:20px auto}
+.pixbox{background:#111;border:1px solid #d4af37;padding:20px;border-radius:20px;max-width:500px;margin:20px auto}
+</style>
+</head>
+<body>
+<h1 style="color:#d4af37">PONTE LINKS</h1>
+<p>Pontifique seu link para o mundo todo</p>
+
+<input id="linkInput" placeholder="Cole seu link do Insta/YouTube/TikTok aqui">
+<br><br>
+<button class="btn" onclick="gerar()">✨ GERAR PONTE LINKS</button>
+
+<div class="box" id="resultado">Seu link pontificado vai aparecer aqui</div>
+
+<div class="pixbox">
+<h3 style="color:#d4af37">💛 Apoie o Ponte Links</h3>
+<p style="font-size:14px">Chave CNPJ Pix:</p>
+<div style="background:#000;padding:12px;border-radius:10px;display:flex;justify-content:space-between;align-items:center">
+<span id="pixKey">67.531.029/0001-70</span>
+<button onclick="copiarPix()" style="background:#d4af37;border:none;padding:8px 15px;border-radius:20px;font-weight:bold;cursor:pointer">📋 COPIAR</button>
+</div>
+<p style="font-size:11px;color:#aaa;margin-top:10px">Titular: Ponte Links • CNPJ 67.531.029/0001-70</p>
+<img id="qr" style="background:#fff;padding:10px;border-radius:10px;margin-top:10px" width="180">
 </div>
 
 <script>
-function copiarPix(){
-  navigator.clipboard.writeText("67531029000170");
-  alert("Chave Pix CNPJ copiada! 67.531.029/0001-70");
+function gerar(){
+ let v=document.getElementById('linkInput').value
+ if(!v)return alert('Cole um link primeiro')
+ let id=Math.random().toString(36).substring(2,6)
+ let final=`https://pontelinks.com/p/${id}?sig=${Date.now()}`
+ document.getElementById('resultado').innerHTML=`${final}<br><br><button class="btn" onclick="navigator.clipboard.writeText('${final}')">📋 COPIAR LINK</button>`
 }
-// QR Code simples via API pública (sem backend)
-document.getElementById('qrcode').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=00020126580014BR.GOV.BCB.PIX0132675310290001705204000053039865802BR5911PONTE LINKS6009SAO PAULO62070503***6304" width="180">`;
+function copiarPix(){
+ navigator.clipboard.writeText("67531029000170")
+ alert("Chave Pix CNPJ copiada! 67.531.029/0001-70")
+}
+document.getElementById('qr').src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=00020126580014BR.GOV.BCB.PIX0136675310290001705204000053039865802BR5911PONTE LINKS6009SAO PAULO62070503***6304"
 </script>
+</body>
+</html>
