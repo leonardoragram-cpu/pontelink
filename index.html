@@ -8,7 +8,7 @@
 body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background: #f5f5f5; }
 .container { max-width: 500px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 15px; }
 .info-box { background: #f0f0f0; padding: 12px; border-radius: 10px; margin-top: 12px; font-size: 14px; }
-.btn { display:block; width:100%; padding:15px; border-radius:10px; font-weight:bold; margin-top:12px; border:none; cursor:pointer; text-decoration:none; }
+.btn { display:block; width:100%; padding:14px; border-radius:10px; font-weight:bold; margin-top:12px; border:none; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -20,35 +20,17 @@ body { font-family: Arial, sans-serif; text-align: center; padding: 20px; backgr
   <div class="info-box">Recebo em: USD Dollar + EUR Euro via International Bank Transfer</div>
   <div class="info-box">Prévia: Produtos Premium do Brasil para o Mundo</div>
 
-  <!-- TUDO NOVO COMEÇA AQUI - UM ABAIXO DO OUTRO -->
   <div class="info-box" style="border: 2px solid green; text-align:left;">
-    <b>💵 Como me pagar do exterior / HOW TO PAY ME:</b><br><br>
-    <b>USD:</b> Inter Global Account - USA<br>
-    Routing + Account Number (está no seu App Inter)<br><br>
-    <b>EUR:</b> Inter Global Account - Europe<br>
-    IBAN (está no seu App Inter)<br>
+    <b>💵 Onde receber do exterior:</b><br>
+    USD: Inter Global Account USA - Routing + Account<br>
+    EUR: Inter Global Account Europe - IBAN: (seu IBAN aqui)<br>
     SWIFT: BINTBRSPXXX
   </div>
 
-  <button class="btn" style="background:#000; color:#fff;" onclick="copiarLink()">🔗 Copiar meu link</button>
+  <button class="btn" style="background:#000; color:#fff;" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copiado! ✅')">🔗 Copiar meu link</button>
   
-  <button class="btn" style="background:#fff; color:#000; border:2px solid #000;" onclick="compartilharLink()">📤 Compartilhar em outras redes</button>
+  <button class="btn" style="background:#fff; color:#000; border:2px solid #000;" onclick="if(navigator.share){navigator.share({title:'PonteLinks',url:window.location.href})}else{navigator.clipboard.writeText(window.location.href); alert('Link copiado! ✅')}">📤 Compartilhar em outras redes</button>
 
 </div>
-
-<script>
-function copiarLink() {
-  navigator.clipboard.writeText(window.location.href);
-  alert("Link copiado! ✅ Agora cola no WhatsApp, Instagram, Facebook");
-}
-function compartilharLink() {
-  if (navigator.share) {
-    navigator.share({ title: 'PonteLinks', text: 'Olha meu PonteLinks!', url: window.location.href });
-  } else {
-    copiarLink();
-  }
-}
-</script>
-
 </body>
 </html>
