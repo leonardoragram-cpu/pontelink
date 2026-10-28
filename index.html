@@ -44,4 +44,49 @@ body{background:#060606;display:flex;justify-content:center;font-family:-apple-s
     <img src="img/logo.png" alt="PONTELINKS">
     <h1>PONTELINKS</h1>
   </div>
-  <div class="saiba-top"><a href="saiba-tudo-sobre.html">✨
+  <div class="saiba-top"><a href="saiba-tudo-sobre.html">✨ Saiba tudo a respeito</a></div>
+  <div class="title">Pontifique seu link para o<br>mundo todo</div>
+  <div class="input-wrap"><input id="linkInput" placeholder="Cole seu link aqui"></div>
+  <button class="btn-gerar" onclick="gerar()">✨ GERAR PONTELINKS</button>
+  <div class="box-gold">
+    <h2 id="resultText">SEU LINK PONTIFICADO VAI APARECER AQUI</h2>
+    <div class="box-actions">
+      <button class="btn-mini" onclick="copiar()">📋 COPIAR</button>
+      <button class="btn-mini" onclick="abrirPrevia()">📄 PRÉVIA</button>
+    </div>
+  </div>
+  <div class="box-white">Mesmo que a sua hospedagem seja sempre gratuita, considere fazer uma contribuição mensal, se estiver ao seu alcance.</div>
+  <button class="btn btn-white" onclick="window.open('SEU-LINK-PIX-BR','_blank')">💛 Contribuir via Pix</button>
+  <button class="btn btn-white-sm" onclick="window.open('SEU-LINK-INTER-DOLAR','_blank')">💵 Inter - Dólar ($)</button>
+  <button class="btn btn-white-sm" onclick="window.open('SEU-LINK-INTER-EURO','_blank')">💶 Inter - Euro (€)</button>
+  <button class="btn btn-black" onclick="baixar()">📥 Baixar Aplicativo</button>
+  <button class="btn-cloud">🛡️ Cloudflare de Segurança Ativo - Protegido por Cloudflare®</button>
+  <div class="stats-title">📊 Estatísticas</div>
+  <div class="stats"><div class="stat"><b>1.2k</b>Links</div><div class="stat"><b>8.5k</b>Cliques</div></div>
+</div>
+<div id="modal" onclick="this.style.display='none'"><div class="m" onclick="event.stopPropagation()"><h3>Prévia da sua Ponte</h3><div id="prevBox" style="border:1px solid #ddd;border-radius:10px;padding:10px;margin-top:10px;word-break:break-all;font-size:13px"></div><button class="btn btn-black" style="margin-top:12px" onclick="document.getElementById('modal').style.display='none'">Fechar</button></div></div>
+<script>
+let finalLink="";
+function gerar(){
+  let v=document.getElementById('linkInput').value.trim();
+  if(!v){alert('Cole seu link');return}
+  if(!v.startsWith('http')) v='https://'+v;
+  const id = Math.random().toString(36).substring(2,8) + Math.random().toString(36).substring(2,6);
+  finalLink='https://pontelinks.com.br/p/'+id;
+  document.getElementById('resultText').innerText=finalLink;
+}
+function copiar(){
+  if(!finalLink){alert('Gere primeiro');return}
+  navigator.clipboard.writeText(finalLink);
+  document.getElementById('resultText').innerText='✅ COPIADO!';
+  setTimeout(()=>{document.getElementById('resultText').innerText=finalLink},1500);
+}
+function abrirPrevia(){
+  if(!finalLink){alert('Gere primeiro');return}
+  document.getElementById('prevBox').innerHTML='<b>'+finalLink+'</b><br><br>🖼️ Prévia WhatsApp<br><b>Título do seu link</b><br>Descrição<br><br>📊 Repercussão desta ponte<br>👁️ 12 visualizações<br>🖱️ 8 cliques<br>📍 De onde veio: Facebook, X, Direto/WhatsApp<br><br>💡 Ver mapa completo no App';
+  document.getElementById('modal').style.display='flex';
+}
+function baixar(){alert('Link do App em breve');}
+</script>
+</body>
+</html>
