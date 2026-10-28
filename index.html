@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ponte Links - Manutenção</title>
-<style>
-body{background:#fff;color:#000;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;font-family:Arial;text-align:center}
-.box{border:3px solid #000;border-radius:20px;padding:40px 20px;max-width:360px}
-h1{margin:0 0 10px}
-</style>
-</head>
-<body>
-<div class="box">
-<h1>Ponte Links ®</h1>
-<p>pontelinks.com</p>
-<h2>🔧 Em Manutenção</h2>
-<p>Estamos melhorando para você.<br>Voltamos em breve.</p>
+<!-- PIX SECTION - ADICIONA ONDE ESTAVA "Contribuir via Pix" -->
+<div style="background:#111;border:1px solid #d4af37;padding:20px;border-radius:20px;max-width:500px;margin:20px auto">
+  <h3 style="color:#d4af37">💛 Apoie o Ponte Links</h3>
+  <p style="font-size:14px">Chave CNPJ (Pix):</p>
+  <div style="background:#000;padding:12px;border-radius:10px;font-family:monospace;display:flex;justify-content:space-between;align-items:center">
+    <span id="pixKey">67.531.029/0001-70</span>
+    <button onclick="copiarPix()" style="background:#d4af37;border:none;padding:8px 15px;border-radius:20px;font-weight:bold;cursor:pointer">📋 COPIAR</button>
+  </div>
+  <p style="font-size:12px;margin-top:10px;color:#aaa">Titular: Ponte Links • CNPJ: 67.531.029/0001-70</p>
+  <div id="qrcode" style="margin:15px auto;background:#fff;padding:10px;width:180px;border-radius:10px"></div>
 </div>
-</body>
-</html>
+
+<script>
+function copiarPix(){
+  navigator.clipboard.writeText("67531029000170");
+  alert("Chave Pix CNPJ copiada! 67.531.029/0001-70");
+}
+// QR Code simples via API pública (sem backend)
+document.getElementById('qrcode').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=00020126580014BR.GOV.BCB.PIX0132675310290001705204000053039865802BR5911PONTE LINKS6009SAO PAULO62070503***6304" width="180">`;
+</script>
