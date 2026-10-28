@@ -1,51 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PONTE LINKS - Pontifique seu link</title>
+<title>Ponte Links - Pontifique seu link para o mundo todo</title>
+<link rel="icon" href="img/icon-512.png">
+<link rel="manifest" href="manifest.json">
 <style>
-body{background:#0a0a0a;color:#fff;font-family:Arial;text-align:center;padding:20px}
-input{width:90%;max-width:500px;padding:15px;border-radius:30px;border:none}
-.btn{background:#d4af37;color:#000;padding:12px 30px;border-radius:30px;font-weight:bold;border:none;margin:10px;cursor:pointer}
-.box{border:2px dashed #d4af37;background:#222;padding:20px;border-radius:20px;max-width:500px;margin:20px auto}
-.pixbox{background:#111;border:1px solid #d4af37;padding:20px;border-radius:20px;max-width:500px;margin:20px auto}
-</style>
-</head>
-<body>
-<h1 style="color:#d4af37">PONTE LINKS</h1>
-<p>Pontifique seu link para o mundo todo</p>
-
-<input id="linkInput" placeholder="Cole seu link do Insta/YouTube/TikTok aqui">
-<br><br>
-<button class="btn" onclick="gerar()">✨ GERAR PONTE LINKS</button>
-
-<div class="box" id="resultado">Seu link pontificado vai aparecer aqui</div>
-
-<div class="pixbox">
-<h3 style="color:#d4af37">💛 Apoie o Ponte Links</h3>
-<p style="font-size:14px">Chave CNPJ Pix:</p>
-<div style="background:#000;padding:12px;border-radius:10px;display:flex;justify-content:space-between;align-items:center">
-<span id="pixKey">67.531.029/0001-70</span>
-<button onclick="copiarPix()" style="background:#d4af37;border:none;padding:8px 15px;border-radius:20px;font-weight:bold;cursor:pointer">📋 COPIAR</button>
-</div>
-<p style="font-size:11px;color:#aaa;margin-top:10px">Titular: Ponte Links • CNPJ 67.531.029/0001-70</p>
-<img id="qr" style="background:#fff;padding:10px;border-radius:10px;margin-top:10px" width="180">
-</div>
-
-<script>
-function gerar(){
- let v=document.getElementById('linkInput').value
- if(!v)return alert('Cole um link primeiro')
- let id=Math.random().toString(36).substring(2,6)
- let final=`https://pontelinks.com/p/${id}?sig=${Date.now()}`
- document.getElementById('resultado').innerHTML=`${final}<br><br><button class="btn" onclick="navigator.clipboard.writeText('${final}')">📋 COPIAR LINK</button>`
-}
-function copiarPix(){
- navigator.clipboard.writeText("67531029000170")
- alert("Chave Pix CNPJ copiada! 67.531.029/0001-70")
-}
-document.getElementById('qr').src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=00020126580014BR.GOV.BCB.PIX0136675310290001705204000053039865802BR5911PONTE LINKS6009SAO PAULO62070503***6304"
-</script>
-</body>
-</html>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#080808;color:#fff;font-family:'Montserrat',sans-serif;min-height:100vh;position:relative;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:url('img/icon-512.png') center bottom / 800px no-repeat;opacity:0.18;filter:sepia(1) saturate(2);z-index:0}
+.container{position:relative;z-index:2;max-width:420px;margin:0 auto;padding:12px 18px 30px}
+.top{display:flex;align-items:center;gap:10px;justify-content:center;margin:10px 0 18px}
+.top img{width:38px;height:38px}
+.top b{letter-spacing:2.5px;font-size:16px;color:#e8d8a0;font-weight:700}
+h1{text-align:center;font-size:28px;line-height:1.15;font-weight:600;margin-bottom:18px}
+.input-wrap{background:#f5f5f5;border-radius:24px;padding:12px 16px;display:flex;align-items:center;gap:8px}
+.input-wrap input{flex:1;border:none;outline:none;background:transparent;font-size:15px;color:#333}
+.input-wrap input
