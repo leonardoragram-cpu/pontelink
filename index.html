@@ -6,73 +6,57 @@
 <title>Ponte Links</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;display:flex;justify-content:center;font-family:Inter,Arial,sans-serif}
-.wrap{width:100%;max-width:430px;padding:18px 14px 30px;background:#000;min-height:100vh}
-.top{display:flex;gap:8px;margin-bottom:12px}
-.top a{flex:1;text-decoration:none;background:#2b2515;border:1.6px solid #C9A86A;color:#E8D9B0;border-radius:30px;padding:12px 6px;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px}
-.hero img{width:100%;border-radius:18px;display:block}
-.slogan{font-family:Georgia,serif;color:#fff;text-align:center;font-size:34px;line-height:1.1;font-weight:600;margin:18px 0 18px;letter-spacing:0.2px}
-.input{width:100%;border:1.5px solid #C9A86A;background:#151515;border-radius:14px;padding:14px;display:flex;gap:10px;margin-bottom:14px}
-.input input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:16px}
-.btn-gold{width:100%;background:#E6C06A;color:#000;border:none;border-radius:14px;padding:16px;font-weight:900;font-size:19px;margin-bottom:12px;cursor:pointer}
-.linkbox{border:1.5px dashed #C9A86A;border-radius:14px;padding:8px 8px 8px 14px;display:flex;align-items:center;justify-content:space-between;background:#111;margin-bottom:14px}
-.linkbox span{font-size:14px;color:#fff;word-break:break-all}
-.btn-copy{background:#fff;border:none;border-radius:8px;padding:8px 14px;font-weight:800;cursor:pointer}
-.btn-white{width:100%;background:#fff;color:#000;border:none;border-radius:14px;padding:14px;font-weight:700;font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:12px;cursor:pointer}
-.foot{text-align:center;color:#555;font-size:13px;margin-top:22px}
+body{background:#000;display:flex;justify-content:center;font-family:Arial}
+.wrap{max-width:430px;width:100%;padding:14px;background:#000;min-height:100vh}
+.top{display:flex;gap:8px}
+.top a{flex:1;text-align:center;text-decoration:none;border:1.5px solid #C9A86A;color:#E8D9B0;background:#231E11;padding:12px;border-radius:30px;font-weight:700;font-size:13px}
+.hero img{width:100%;border-radius:16px;margin:12px 0;display:block}
+.slogan{color:#fff;font-family:Georgia;font-size:33px;text-align:center;font-weight:600;line-height:1.1;margin:12px 0 16px}
+.box{border:1.5px solid #C9A86A;border-radius:12px;padding:14px;display:flex;gap:8px;background:#111;margin-bottom:12px}
+.box input{flex:1;background:transparent;border:0;outline:0;color:#fff;font-size:16px}
+.btn-gold{width:100%;background:#E6C06A;border:0;border-radius:12px;padding:16px;font-weight:900;font-size:19px;cursor:pointer;margin-bottom:12px}
+.link{border:1.5px dashed #C9A86A;border-radius:12px;padding:8px 8px 8px 14px;display:flex;justify-content:space-between;align-items:center;background:#111;margin-bottom:12px}
+.link span{color:#fff;font-size:14px;word-break:break-all}
+.btn-copy{background:#fff;border:0;border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer}
+.btn-w{width:100%;background:#fff;border:0;border-radius:12px;padding:14px;font-weight:700;margin-bottom:8px;cursor:pointer;text-align:left}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="top">
-<a href="#">⬇ Baixar Aplicativo</a>
-<a href="#">ⓘ Saiba tudo sobre</a>
-</div>
+<div class="top"><a href="#">Baixar App</a><a href="#">Saiba tudo</a></div>
 <div class="hero"><img src="arvore.jpg"></div>
 <div class="slogan">Pontifique seu link para o mundo todo</div>
-<div class="input">🔗<input id="url" placeholder="Cole seu link aqui..."></div>
+<div class="box">🔗<input id="url" placeholder="Cole seu link aqui..."></div>
 <button class="btn-gold" onclick="gerar()">GERAR PONTE LINKS</button>
-<div class="linkbox"><span id="out">pontelinks.com.br/p/aB3x9</span><button class="btn-copy" onclick="copiar()">Copiar</button></div>
-<button class="btn-white" onclick="verPrevia()">👁 VER PRÉVIA</button>
-<button class="btn-white" onclick="alert('Coloque seu Pix aqui depois')">✙ Contribuir via Pix</button>
-<button class="btn-white" onclick="alert('Coloque seu link Inter Dólar aqui')"> $ Contribuir via Inter - Dólar USA</button>
-<button class="btn-white" onclick="alert('Coloque seu link Inter Euro aqui')"> € Contribuir via Inter - Euro</button>
-<div class="foot">Cloudflare</div>
+<div class="link"><span id="out">pontelinks.com.br/p/...</span><button class="btn-copy" onclick="copiar()">Copiar</button></div>
+<button class="btn-w" onclick="previa()">👁 VER PRÉVIA</button>
+<button class="btn-w">💚 Contribuir via Pix</button>
+<button class="btn-w">$ Inter Dólar</button>
+<button class="btn-w">€ Inter Euro</button>
 </div>
 <script>
-// Se entrou em pontelinks.com.br/p/XXXX ou ?p=XXXX -> redireciona pro link original salvo
 (function(){
-  let code = location.pathname.split('/p/')[1] || new URLSearchParams(location.search).get('p');
-  if(code){
-    code = code.replace('/','').trim();
-    let map = JSON.parse(localStorage.getItem('pontelinks_map')||'{}');
-    if(map[code]){
-      document.body.innerHTML = '<div style="color:#fff;background:#000;height:100vh;display:flex;align-items:center;justify-content:center;font-family:Arial;text-align:center;padding:20px">Redirecionando para<br>'+map[code]+'</div>';
-      setTimeout(()=>location.href=map[code],1200);
-    }
-  }
+ let c=location.pathname.split('/p/')[1];
+ if(c){c=c.split('?')[0].trim(); let m=JSON.parse(localStorage.getItem('pontemap')||'{}'); if(m[c]) location.href=m[c];}
 })();
-let ultimoCode='';
 function gerar(){
-  let v=document.getElementById('url').value.trim();
-  if(!v){alert('Cole seu link');return}
-  if(!v.startsWith('http')) v='https://'+v;
-  let c=Math.random().toString(36).slice(2,7);
-  let map=JSON.parse(localStorage.getItem('pontelinks_map')||'{}');
-  map[c]=v;
-  localStorage.setItem('pontelinks_map',JSON.stringify(map));
-  ultimoCode=c;
-  document.getElementById('out').innerText='pontelinks.com.br/p/'+c;
+ let v=document.getElementById('url').value.trim();
+ if(!v)return alert('Cole seu link');
+ if(!v.startsWith('http'))v='https://'+v;
+ let cod=Math.random().toString(36).slice(2,6);
+ let m=JSON.parse(localStorage.getItem('pontemap')||'{}');
+ m[cod]=v; localStorage.setItem('pontemap',JSON.stringify(m));
+ document.getElementById('out').innerText='pontelinks.com.br/p/'+cod;
 }
 function copiar(){
-  let t='https://'+document.getElementById('out').innerText;
-  navigator.clipboard.writeText(t).then(()=>alert('Copiado: '+t));
+ let t='https://'+document.getElementById('out').innerText;
+ navigator.clipboard.writeText(t); alert('Copiado');
 }
-function verPrevia(){
-  let v=document.getElementById('url').value.trim();
-  if(!v){alert('Cole um link primeiro');return}
-  if(!v.startsWith('http')) v='https://'+v;
-  window.open(v,'_blank');
+function previa(){
+ let v=document.getElementById('url').value.trim();
+ if(!v)return alert('Cole um link');
+ if(!v.startsWith('http'))v='https://'+v;
+ window.open(v,'_blank');
 }
 </script>
 </body>
