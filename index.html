@@ -7,57 +7,57 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;display:flex;justify-content:center;font-family:Arial}
-.wrap{max-width:430px;width:100%;padding:14px;background:#000;min-height:100vh}
+.wrap{max-width:430px;width:100%;padding:14px;background:#000}
 .top{display:flex;gap:8px}
 .top a{flex:1;text-align:center;text-decoration:none;border:1.5px solid #C9A86A;color:#E8D9B0;background:#231E11;padding:12px;border-radius:30px;font-weight:700;font-size:13px}
 .hero img{width:100%;border-radius:16px;margin:12px 0;display:block}
-.slogan{color:#fff;font-family:Georgia;font-size:33px;text-align:center;font-weight:600;line-height:1.1;margin:12px 0 16px}
+.slogan{color:#fff;font-family:Georgia;font-size:32px;text-align:center;font-weight:600;margin:10px 0}
 .box{border:1.5px solid #C9A86A;border-radius:12px;padding:14px;display:flex;gap:8px;background:#111;margin-bottom:12px}
 .box input{flex:1;background:transparent;border:0;outline:0;color:#fff;font-size:16px}
-.btn-gold{width:100%;background:#E6C06A;border:0;border-radius:12px;padding:16px;font-weight:900;font-size:19px;cursor:pointer;margin-bottom:12px}
-.link{border:1.5px dashed #C9A86A;border-radius:12px;padding:8px 8px 8px 14px;display:flex;justify-content:space-between;align-items:center;background:#111;margin-bottom:12px}
-.link span{color:#fff;font-size:14px;word-break:break-all}
-.btn-copy{background:#fff;border:0;border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer}
-.btn-w{width:100%;background:#fff;border:0;border-radius:12px;padding:14px;font-weight:700;margin-bottom:8px;cursor:pointer;text-align:left}
+.btn-gold{width:100%;background:#E6C06A;border:0;border-radius:12px;padding:16px;font-weight:900;font-size:18px;cursor:pointer;margin-bottom:12px}
+.btn{width:100%;background:#fff;border:0;border-radius:12px;padding:14px;font-weight:700;margin-bottom:8px;cursor:pointer;display:flex;gap:10px;align-items:center}
+.out{border:1.5px dashed #C9A86A;border-radius:12px;padding:10px 10px 10px 14px;display:flex;justify-content:space-between;align-items:center;background:#111;margin-bottom:12px;color:#fff}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="top"><a href="#">Baixar App</a><a href="#">Saiba tudo</a></div>
+<div class="top"><a href="#app">Baixar App</a><a href="#sobre">Saiba tudo</a></div>
 <div class="hero"><img src="arvore.jpg"></div>
 <div class="slogan">Pontifique seu link para o mundo todo</div>
-<div class="box">🔗<input id="url" placeholder="Cole seu link aqui..."></div>
+
+<div class="box">🔗<input id="url" placeholder="Cole seu link aqui"></div>
 <button class="btn-gold" onclick="gerar()">GERAR PONTE LINKS</button>
-<div class="link"><span id="out">pontelinks.com.br/p/...</span><button class="btn-copy" onclick="copiar()">Copiar</button></div>
-<button class="btn-w" onclick="previa()">👁 VER PRÉVIA</button>
-<button class="btn-w">💚 Contribuir via Pix</button>
-<button class="btn-w">$ Inter Dólar</button>
-<button class="btn-w">€ Inter Euro</button>
+<div class="out"><span id="out">pontelinks.com.br/p/...</span><button onclick="copiar()" style="background:#fff;border:0;border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer">Copiar</button></div>
+
+<button class="btn" onclick="abrir()">👁 VER PRÉVIA</button>
+<button class="btn" onclick="alert('Coloque sua chave Pix aqui')">💚 Contribuir via Pix</button>
+<button class="btn" onclick="window.open('https://inter.com','_blank')">$ Contribuir Inter Dólar</button>
+<button class="btn" onclick="window.open('https://inter.com','_blank')">€ Contribuir Inter Euro</button>
 </div>
+
 <script>
-(function(){
- let c=location.pathname.split('/p/')[1];
- if(c){c=c.split('?')[0].trim(); let m=JSON.parse(localStorage.getItem('pontemap')||'{}'); if(m[c]) location.href=m[c];}
-})();
+let ultimo='';
 function gerar(){
  let v=document.getElementById('url').value.trim();
- if(!v)return alert('Cole seu link');
+ if(!v)return;
  if(!v.startsWith('http'))v='https://'+v;
- let cod=Math.random().toString(36).slice(2,6);
- let m=JSON.parse(localStorage.getItem('pontemap')||'{}');
- m[cod]=v; localStorage.setItem('pontemap',JSON.stringify(m));
- document.getElementById('out').innerText='pontelinks.com.br/p/'+cod;
+ let id=Math.random().toString(36).slice(2,6);
+ localStorage.setItem('p_'+id,v);
+ ultimo=id;
+ document.getElementById('out').innerText='pontelinks.com.br/p/'+id;
 }
 function copiar(){
- let t='https://'+document.getElementById('out').innerText;
- navigator.clipboard.writeText(t); alert('Copiado');
+ navigator.clipboard.writeText('https://'+document.getElementById('out').innerText);
 }
-function previa(){
+function abrir(){
  let v=document.getElementById('url').value.trim();
- if(!v)return alert('Cole um link');
+ if(!v)return;
  if(!v.startsWith('http'))v='https://'+v;
  window.open(v,'_blank');
 }
+// redireciona
+let c=location.pathname.split('/p/')[1];
+if(c){let l=localStorage.getItem('p_'+c.split('?')[0]); if(l)location.href=l;}
 </script>
 </body>
 </html>
