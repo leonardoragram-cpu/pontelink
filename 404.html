@@ -1,33 +1,45 @@
 <!doctype html>
+<html lang="pt-BR">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Prévia PonteLinks</title>
-<style>body{margin:0;background:#000;color:#fff;font-family:sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:20px;text-align:center}.b{background:#111;border:1px solid #333;border-radius:12px;padding:18px;max-width:420px;width:100%}img{width:100%;border-radius:10px}.g{background:#d4af37;color:#000;padding:14px;border:0;border-radius:10px;width:100%;font-weight:800;margin-top:10px}</style>
-<div class="b">
+<title>Prévia Segura - PonteLinks</title>
+<style>
+body{margin:0;background:#000;color:#fff;font-family:system-ui,sans-serif;padding:18px;display:flex;min-height:100vh;align-items:center;justify-content:center}
+.box{background:#111;border:1.5px solid #d4af37;border-radius:16px;padding:18px;max-width:460px;width:100%;text-align:center}
+.box img{width:100%;max-width:420px;border-radius:12px;margin-bottom:10px}
+.title{font-family:Georgia,serif;font-size:22px;margin:8px 0}
+.dest{color:#e8c36a;word-break:break-all;font-size:13px;margin:10px 0;background:#000;padding:10px;border-radius:8px;border:1px dashed #d4af37}
+.gold{width:100%;background:#e8c36a;color:#000;border:none;border-radius:12px;padding:14px;font-weight:900;font-size:16px;cursor:pointer;margin-top:10px}
+.small{font-size:11px;color:#888;margin-top:10px}
+a{color:#d4af37;text-decoration:none}
+</style>
+<div class="box">
 <img src="arvore.jpg">
-<h3>PonteLinks - Prévia Segura</h3>
-<p id="m">Verificando link...</p>
-<p id="d" style="word-break:break-all;color:#d4af37;font-size:12px"></p>
-<button id="go" class="g" style="display:none">CONTINUAR PARA DESTINO</button>
-<p style="font-size:11px;color:#888;margin-top:10px">Você veio de: <span id="o"></span><br>Cliques: <span id="c"></span></p>
+<div class="title">Prévia Segura PonteLinks</div>
+<p id="msg">Verificando seu link...</p>
+<div id="dest" class="dest"></div>
+<button id="go" class="gold" style="display:none">CONTINUAR PARA DESTINO</button>
+<p class="small">Você veio de: <span id="orig"></span><br>Cliques: <span id="cliq"></span></p>
+<a href="/" class="small">← voltar para pontelinks.com</a>
 </div>
 <script>
 let id=location.pathname.split('/p/')[1];
 if(!id) id=new URLSearchParams(location.search).get('p');
 function bd(s){try{return atob(s.replace(/-/g,'+').replace(/_/g,'/'))}catch(e){return null}}
 let url=bd(id);
-if(!url){let db=JSON.parse(localStorage.getItem('pl')||'{}');url=db[id]}
+if(!url){try{let db=JSON.parse(localStorage.getItem('pl')||'{}');url=db[id]}catch(e){}}
 if(url){
- let cc=parseInt(localStorage.getItem('c_'+id)||0)+1;
- localStorage.setItem('c_'+id,cc);
- m.innerText='Prévia verificada:';
- d.innerText=url;
- o.innerText=document.referrer||'pontelinks.com / Direto';
- c.innerText=cc;
+ let c=parseInt(localStorage.getItem('c_'+id)||0)+1;
+ localStorage.setItem('c_'+id,c);
+ msg.innerText='Link verificado!';
+ dest.innerText=url;
+ orig.innerText=document.referrer||'Direto / pontelinks.com';
+ cliq.innerText=c;
  go.style.display='block';
  go.onclick=()=>location.href=url;
 }else{
- m.innerText='Link não encontrado';
- d.innerText='ID: '+id;
+ msg.innerText='Link não encontrado';
+ dest.innerText='ID: '+(id||'vazio');
 }
 </script>
+</html>
