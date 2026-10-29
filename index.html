@@ -7,7 +7,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;display:flex;justify-content:center;font-family:Arial}
-.wrap{max-width:430px;width:100%;padding:14px;background:#000}
+.wrap{max-width:430px;width:100%;padding:14px;background:#000;min-height:100vh}
 .top{display:flex;gap:8px}
 .top a{flex:1;text-align:center;text-decoration:none;border:1.5px solid #C9A86A;color:#E8D9B0;background:#231E11;padding:12px;border-radius:30px;font-weight:700;font-size:13px}
 .hero img{width:100%;border-radius:16px;margin:12px 0;display:block}
@@ -24,22 +24,20 @@ body{background:#000;display:flex;justify-content:center;font-family:Arial}
 <div class="top"><a href="#app">Baixar App</a><a href="#sobre">Saiba tudo</a></div>
 <div class="hero"><img src="arvore.jpg"></div>
 <div class="slogan">Pontifique seu link para o mundo todo</div>
-
 <div class="box">🔗<input id="url" placeholder="Cole seu link aqui"></div>
 <button class="btn-gold" onclick="gerar()">GERAR PONTE LINKS</button>
 <div class="out"><span id="out">pontelinks.com.br/p/...</span><button onclick="copiar()" style="background:#fff;border:0;border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer">Copiar</button></div>
-
 <button class="btn" onclick="abrir()">👁 VER PRÉVIA</button>
-<button class="btn" onclick="alert('Coloque sua chave Pix aqui')">💚 Contribuir via Pix</button>
+<button class="btn" onclick="alert('PIX aqui')">💚 Contribuir via Pix</button>
 <button class="btn" onclick="window.open('https://inter.com','_blank')">$ Contribuir Inter Dólar</button>
 <button class="btn" onclick="window.open('https://inter.com','_blank')">€ Contribuir Inter Euro</button>
+<div id="sobre" style="color:#888;margin-top:20px;font-size:13px">Saiba tudo sobre: links curtos com sua árvore.</div>
 </div>
-
 <script>
 let ultimo='';
 function gerar(){
  let v=document.getElementById('url').value.trim();
- if(!v)return;
+ if(!v)return alert('Cole um link');
  if(!v.startsWith('http'))v='https://'+v;
  let id=Math.random().toString(36).slice(2,6);
  localStorage.setItem('p_'+id,v);
@@ -47,17 +45,22 @@ function gerar(){
  document.getElementById('out').innerText='pontelinks.com.br/p/'+id;
 }
 function copiar(){
- navigator.clipboard.writeText('https://'+document.getElementById('out').innerText);
+ let t='https://'+document.getElementById('out').innerText;
+ navigator.clipboard.writeText(t);
+ alert('Copiado: '+t);
 }
 function abrir(){
  let v=document.getElementById('url').value.trim();
- if(!v)return;
+ if(!v)return alert('Cole um link');
  if(!v.startsWith('http'))v='https://'+v;
  window.open(v,'_blank');
 }
-// redireciona
 let c=location.pathname.split('/p/')[1];
-if(c){let l=localStorage.getItem('p_'+c.split('?')[0]); if(l)location.href=l;}
+if(c){
+ let k='p_'+c.split('?')[0].trim();
+ let l=localStorage.getItem(k);
+ if(l) location.href=l;
+}
 </script>
 </body>
 </html>
