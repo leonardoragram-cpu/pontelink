@@ -1,19 +1,78 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Pontelinks</title>
-<style>body{font-family:sans-serif;background:#000;color:#fff;text-align:center;margin:0;padding:20px}.nav{display:flex;justify-content:space-between;margin-bottom:20px}.nav a{color:#d4af37;text-decoration:none;font-size:14px;cursor:pointer}img{max-width:85%;margin:15px 0;border-radius:12px}input{width:100%;padding:15px;border-radius:8px;border:1px solid #d4af37;background:#111;color:#fff;box-sizing:border-box;margin-bottom:10px}.btn{width:100%;padding:15px;border-radius:8px;border:none;font-weight:bold;cursor:pointer;margin-bottom:10px}.gold{background:#d4af37;color:#000}.white{background:#fff;color:#000}#res{display:none;padding:12px;border:1px dashed #d4af37;border-radius:8px;background:#111;margin-bottom:10px;word-break:break-all}#previa{display:none;background:#111;border:1px solid #333;border-radius:12px;padding:15px;margin-top:10px;text-align:left}</style></head><body>
-<div class=nav><a onclick="alert('App em breve! Por enquanto use o site e salve na tela inicial.')">Baixar Aplicativo</a><a onclick="alert('PonteLinks cria links pontelinks.com/p/xxxxx com previa segura. Voce cola o link, gera, e quem receber ve pra onde vai antes de clicar. Protege de golpe. Pix: 67.531.029/0001-70')">Saiba tudo sobre</a></div>
-<img src="arvore.jpg"><div style="font-size:22px;margin-bottom:15px">Pontifique seu link para o mundo todo</div>
-<input id="u" placeholder="Cole seu link aqui https://...">
-<button class="btn gold" onclick="G()">GERAR PONTE LINKS</button>
-<div id="res"><span id="s"></span><br><br><button class="btn gold" style="width:auto;padding:8px 20px" onclick="C()">Copiar</button></div>
-<button class="btn white" onclick="P()">VER PREVIA</button>
-<button class="btn white" onclick="navigator.clipboard.writeText('67.531.029/0001-70');alert('PIX Brasil copiado! 67.531.029/0001-70')">Contribuir via Pix</button>
-<button class="btn white" onclick="alert('Inter Dolar/Euro - Use PIX CNPJ: 67.531.029/0001-70 - Titular Leonard R Gram - Funciona para quem esta fora do Brasil via Pix internacional')">Contribuir via Inter - Dolar / Euro</button>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pontelinks</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:system-ui,sans-serif;padding:16px;min-height:100vh}
+.top{display:flex;gap:10px;margin-bottom:16px}
+.top button{flex:1;background:rgba(212,175,55,.20);border:1.5px solid #d4af37;color:#fff;border-radius:999px;padding:13px 10px;font-weight:700;font-size:13px;cursor:pointer}
+.hero{display:flex;justify-content:center;margin:10px 0}
+.hero img{width:100%;max-width:520px;border-radius:14px}
+.h1{font-family:Georgia,serif;font-size:34px;line-height:1.05;text-align:center;margin:14px 0}
+.input-wrap{position:relative;margin:14px 0}
+.input-wrap input{width:100%;background:#111;border:1.5px solid #d4af37;border-radius:12px;padding:15px 15px 15px 46px;color:#fff;font-size:15px;outline:none}
+.input-wrap i{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:20px;font-style:normal}
+.btn-gold{width:100%;background:#e8c36a;color:#000;border:none;border-radius:12px;padding:16px;font-weight:900;font-size:17px;cursor:pointer;margin-bottom:12px}
+.box{border:1.5px dashed #e8c36a;border-radius:12px;padding:10px 10px 10px 14px;display:none;justify-content:space-between;align-items:center;background:#111;margin-bottom:12px}
+.box span{font-size:14px;word-break:break-all}
+.copy{background:#fff;color:#000;border:none;border-radius:8px;padding:9px 16px;font-weight:800;cursor:pointer}
+.btn-white{width:100%;background:#fff;color:#000;border:none;border-radius:12px;padding:14px;font-weight:800;font-size:15px;display:flex;align-items:center;gap:12px;margin-bottom:10px;cursor:pointer}
+.btn-white b{width:26px;text-align:center;font-size:20px}
+#previa{display:none;background:#111;border:1px solid #333;border-radius:12px;padding:14px;margin-bottom:12px;font-size:13px;text-align:left;line-height:1.5}
+.foot{text-align:center;color:#666;margin-top:20px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="top">
+<button onclick="alert('App em breve!')">⬇️ Baixar Aplicativo</button>
+<button onclick="alert('PonteLinks cria prévia segura. PIX: 67.531.029/0001-70')">ⓘ Saiba tudo sobre</button>
+</div>
+
+<div class="hero"><img src="arvore.jpg"></div>
+<div class="h1">Pontifique seu link para o mundo todo</div>
+
+<div class="input-wrap"><i>🔗</i><input id="link" placeholder="Cole seu link aqui..."></div>
+<button class="btn-gold" onclick="gerar()">GERAR PONTE LINKS</button>
+<div id="res" class="box"><span id="short">pontelinks.com.br/p/aB3x9</span><button class="copy" onclick="copiar()">Copiar</button></div>
 <div id="previa"></div>
-<footer style="margin-top:20px;font-size:11px;color:#666">Cloudflare - Pix 67.531.029/0001-70</footer>
+
+<button class="btn-white" onclick="verPrevia()"><b>👁️</b> VER PRÉVIA</button>
+<button class="btn-white" onclick="pixBR()"><b>✚</b> Contribuir via Pix</button>
+<button class="btn-white" onclick="pixUSA()"><b>$</b> Contribuir via Inter - Dólar USA</button>
+<button class="btn-white" onclick="pixEURO()"><b>€</b> Contribuir via Inter - Euro</button>
+
+<div class="foot">Cloudflare</div>
+
 <script>
-let ID='',URL='';
-function G(){let v=document.getElementById('u').value.trim();if(!v.startsWith('http')){alert('Cole com https://');return}URL=v;ID=btoa(v).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'').slice(0,18);let short=location.origin+'/p/'+ID;document.getElementById('s').innerText=short;document.getElementById('res').style.display='block';navigator.clipboard.writeText(short);let db=JSON.parse(localStorage.getItem('pl')||'{}');db[ID]=v;localStorage.setItem('pl',JSON.stringify(db));alert('Link gerado e COPIADO: '+short)}
-function C(){navigator.clipboard.writeText(document.getElementById('s').innerText);alert('Copiado!')}
-function P(){if(!ID){alert('Gere primeiro');return}let c=localStorage.getItem('c_'+ID)||0;document.getElementById('previa').style.display='block';document.getElementById('previa').innerHTML='<b>PREVIA SEGURA</b><br><br>Destino: <b style=color:#d4af37;word-break:break-all>'+URL+'</b><br><br>Cliques aqui: '+c+'<br>Veio de: '+(document.referrer||'pontelinks.com')+'<br><br><a href=\''+URL+'\' target=_blank><button class=btn gold>IR PARA DESTINO</button></a>';window.scrollTo(0,9999)}
-</script></body></html>
+let ID='', DEST='';
+function gerar(){
+ let v=document.getElementById('link').value.trim();
+ if(!v){alert('Cole seu link');return}
+ if(!v.startsWith('http')) v='https://'+v;
+ DEST=v;
+ ID=btoa(v).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'').slice(0,16);
+ let short='pontelinks.com/p/'+ID;
+ document.getElementById('short').innerText=short;
+ document.getElementById('res').style.display='flex';
+ let db=JSON.parse(localStorage.getItem('pl')||'{}'); db[ID]=v; localStorage.setItem('pl',JSON.stringify(db));
+ navigator.clipboard.writeText('https://'+short);
+ verPrevia(true);
+}
+function copiar(){ let t=document.getElementById('short').innerText; navigator.clipboard.writeText('https://'+t); alert('Copiado: https://'+t); }
+function verPrevia(s){
+ if(!ID){if(!s)alert('Gere um link primeiro');return}
+ let c=localStorage.getItem('c_'+ID)||0;
+ let p=document.getElementById('previa'); p.style.display='block';
+ p.innerHTML='<b style=color:#e8c36a>PRÉVIA SEGURA</b><br><br>Destino: <span style=color:#e8c36a;word-break:break-all>'+DEST+'</span><br>Origem: '+(document.referrer||'pontelinks.com')+'<br>Cliques: '+c+'<br><br><a href=\''+DEST+'\' target=_blank style=text-decoration:none><button class=btn-gold style=margin:0>IR PARA DESTINO</button></a>';
+ if(!s) window.scrollTo(0,999);
+}
+// SEPARADOS COMO VOCÊ PEDIU
+function pixBR(){ navigator.clipboard.writeText('67.531.029/0001-70'); alert('PIX BRASIL copiado: 67.531.029/0001-70\nTitular: Leonard R Gram'); }
+function pixUSA(){ navigator.clipboard.writeText('67.531.029/0001-70'); alert('DÓLAR USA - Inter Global\nPIX CNPJ: 67.531.029/0001-70\nTitular: Leonard R Gram\nRecebe em dólar de fora do Brasil'); }
+function pixEURO(){ navigator.clipboard.writeText('67.531.029/0001-70'); alert('EURO - Inter Global\nPIX CNPJ: 67.531.029/0001-70\nTitular: Leonard R Gram\nRecebe em euro (SEPA)'); }
+</script>
+</body>
+</html>
