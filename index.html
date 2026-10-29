@@ -2,26 +2,102 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ponte Links - Em Manutenção</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>PonteLinks - Pontifique seu link para todos</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0f0f12;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:Inter,system-ui,sans-serif;padding:20px}
-.card{background:#131316;border:1px solid #222;border-radius:28px;padding:32px 24px;max-width:400px;width:100%;text-align:center}
-h1{color:#ffcc4a;font-size:28px;margin-bottom:12px}
-p{color:#fff;font-size:16px;line-height:1.5;margin-bottom:8px}
-.small{color:#888;font-size:13px;margin-top:16px}
-.logo{width:80px;margin-bottom:16px;border-radius:12px}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,-apple-system,Segoe UI,Roboto,sans-serif}
+body{background:#050507;color:#fff;display:flex;justify-content:center}
+.wrap{width:100%;max-width:780px;min-height:100vh;background:#000;padding:8px 14px 0;display:flex;flex-direction:column}
+.top-lang{display:flex;justify-content:flex-end}
+.lang{background:#111;border:1px solid #222;border-radius:22px;padding:4px 10px;display:flex;gap:8px;font-size:12px;color:#888}
+.lang span.active{color:#fff;font-weight:800}
+.logo-box{text-align:center;padding:18px 0 10px}
+.logo{width:210px;height:210px;margin:0 auto;background:radial-gradient(circle at center,rgba(212,160,23,.15),transparent 70%);display:flex;align-items:center;justify-content:center}
+.logo img{width:100%;height:auto;filter:drop-shadow(0 0 18px rgba(255,215,0,.25))}
+h1{font-size:54px;font-weight:500;letter-spacing:1px;text-align:center;margin-top:4px}
+h1 .silver{color:#cbd5e1;font-weight:300}
+h1 .gold{color:#e8c05a;font-weight:600}
+.sub{font-size:18px;color:#d1d5db;text-align:center;margin:10px 0 22px;font-weight:500}
+.row{display:flex;gap:12px;align-items:center}
+.row input{flex:1;height:52px;background:#0f0f12;border:1px solid #d4a01733;border-radius:12px;padding:0 16px;color:#fff;font-size:16px;outline:none}
+.btn-gold{height:52px;background:linear-gradient(180deg,#fde68a,#d4a017);color:#000;border:none;border-radius:12px;padding:0 22px;font-weight:900;font-size:15px;cursor:pointer;box-shadow:0 4px 20px rgba(212,160,23,.35);white-space:nowrap}
+.label{font-size:14px;font-weight:800;letter-spacing:.6px;color:#e5e7eb;text-align:center;margin:22px 0 14px;text-transform:uppercase}
+.result{min-height:52px;background:#0a0a0a;border:1px dashed #333;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#555;font-weight:700;padding:12px}
+.mid{display:flex;gap:14px;justify-content:center;margin:16px 0}
+.btn{height:52px;min-width:168px;border-radius:12px;border:1px solid #555;background:#0f0f12;color:#fff;font-weight:800;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn.gold-text{border-color:#5a4a1a;color:#e8c05a}
+.btn2{display:flex;gap:14px;justify-content:center;margin:12px 0}
+.btn2 .btn{height:46px;min-width:200px;font-size:14px}
+.apoie{text-align:center;margin:24px 0 12px;color:#e8c05a;font-weight:800;font-size:16px}
+.donate{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.donate button{height:44px;padding:0 16px;border-radius:10px;background:#0f0f12;border:1px solid #5a4a1a;color:#e8c05a;font-weight:700;font-size:13px;cursor:pointer}
+.footer{margin-top:auto;border-top:1px solid #111;padding:10px;text-align:center;font-size:12px;color:#f5d78e;display:flex;gap:8px;justify-content:center;align-items:center}
+@media(max-width:600px){h1{font-size:38px}.row{flex-direction:column}.row input,.btn-gold{width:100%}.mid,.btn2{flex-direction:row}.btn,.btn2 .btn{min-width:0;flex:1}}
 </style>
 </head>
 <body>
-<div class="card">
-<img src="arvore.jpg" class="logo" alt="Ponte Links">
-<h1>Em Manutenção</h1>
-<p>Estamos melhorando a Ponte Links para você.</p>
-<p>O gerador de links com preview de imagem está sendo corrigido.</p>
-<p style="margin-top:16px;color:#ffcc4a;font-weight:800">Voltamos em breve.</p>
-<div class="small">pontelinks.com.br<br>Protected by Cloudflare</div>
+<div class="wrap">
+<div class="top-lang"><div class="lang">🇵🇹 PT | 🇬🇧 EN | 🇪🇸 ES</div></div>
+
+<div class="logo-box">
+<div class="logo"><img src="https://pontelinks.com.br/logo-arvore.png" alt="PonteLinks"></div>
+<h1><span class="silver">Ponte</span> <span class="gold">Links</span></h1>
+<div class="sub">Pontifique seu link para todos.</div>
 </div>
+
+<div class="row">
+<input id="inputLink" placeholder="Cole seu link aqui" type="url">
+<button class="btn-gold" onclick="gerar()">GERAR PONTE LINKS</button>
+</div>
+
+<div class="label">SEU LINK PONTIFICADO VAI APARECER AQUI</div>
+<div class="result" id="result">pontelinks.com.br/p/...</div>
+
+<div class="mid">
+<button class="btn" onclick="copiar()">⎙ COPIAR</button>
+<button class="btn gold-text" onclick="previa()">👁 PRÉVIA</button>
+</div>
+
+<div class="btn2">
+<button class="btn" onclick="baixarApp()">⬇ Baixar Aplicativo</button>
+<button class="btn gold-text" onclick="sobre()">ⓘ Saiba tudo sobre</button>
+</div>
+
+<div class="apoie">Apoie o Projeto</div>
+<div class="donate">
+<button onclick="pix()">✳ Contribuir via Pix</button>
+<button onclick="dolar()">$ Contribuir via Inter Dolar</button>
+<button onclick="euro()">€ Contribuir via Inter Euro</button>
+</div>
+
+<div class="footer">☁️ Cloudflare de Segurança Ativo - Protegido por Cloudflare</div>
+</div>
+
+<script>
+let linkFinal="";
+function gerar(){
+let v=document.getElementById('inputLink').value.trim();
+if(!v){alert('Cole seu link primeiro');return}
+if(!v.startsWith('http')) v='https://'+v;
+// campo duplo: se já for pontelinks, vai pra prévia
+if(v.includes('pontelinks.com.br/p/')){linkFinal=v;document.getElementById('result').textContent=v;document.getElementById('result').style.color='#fff';previa();return}
+let code=Math.random().toString(36).substring(2,7);
+linkFinal='https://pontelinks.com.br/p/'+code;
+document.getElementById('result').textContent=linkFinal;
+document.getElementById('result').style.color='#fff';
+localStorage.setItem('ultimoLink',linkFinal);
+}
+function copiar(){
+if(!linkFinal){alert('Gere o link primeiro');return}
+navigator.clipboard.writeText(linkFinal);alert('Link copiado: '+linkFinal);
+}
+function previa(){if(!linkFinal){alert('Gere o link primeiro');return}window.open(linkFinal,'_blank')}
+function baixarApp(){alert('PWA em instalação - Adicione à tela inicial');}
+function sobre(){window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
+function pix(){window.location.href='/pix.html'}
+function dolar(){window.location.href='/dolar.html'}
+function euro(){window.location.href='/euro.html'}
+document.getElementById('inputLink').addEventListener('paste',()=>{setTimeout(()=>{if(document.getElementById('inputLink').value.includes('pontelinks')) gerar()},100)});
+</script>
 </body>
 </html>
