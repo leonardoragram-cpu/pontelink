@@ -1,118 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pontelinks - Links Seguros</title>
-<style>
-body{font-family:sans-serif;background:#000;color:#fff;text-align:center;margin:0;padding:20px}
-.nav-buttons{display:flex;justify-content:space-between;margin-bottom:20px}
-.nav-buttons a{color:#d4af37;text-decoration:none;font-size:14px;cursor:pointer}
-.hero-img{max-width:80%;height:auto;margin:20px 0;border-radius:14px}
-.main-text{font-size:22px;margin-bottom:20px}
-input[type="text"]{width:100%;padding:15px;margin-bottom:12px;border-radius:8px;border:1px solid #d4af37;background:#111;color:#fff;box-sizing:border-box}
-.action-button{width:100%;padding:15px;background:#d4af37;color:#000;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin-bottom:12px}
-.result-box{display:none;justify-content:space-between;align-items:center;padding:10px;border:1px dashed #d4af37;border-radius:8px;margin-bottom:12px;word-break:break-all;background:#111}
-.copy-button{background:#d4af37;border:none;padding:10px 14px;border-radius:6px;cursor:pointer;color:#000;font-weight:700}
-.secondary-button{width:100%;padding:15px;background:#fff;color:#000;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin-bottom:10px}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99;padding:20px;overflow:auto}
-.modal-box{background:#111;border:1px solid #333;border-radius:12px;padding:18px;max-width:480px;margin:40px auto;text-align:left}
-.pix-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
-.pix-grid button{padding:10px;border-radius:8px;border:1px solid #444;background:#1a1a1a;color:#fff;font-size:11px;cursor:pointer}
-.small{color:#999;font-size:12px}
-</style>
-</head>
-<body>
-<div class="nav-buttons">
-<a onclick="openM('mApp')">Baixar Aplicativo</a>
-<a onclick="openM('mSobre')">Saiba tudo sobre</a>
-</div>
-<img src="arvore.jpg" class="hero-img">
-<div class="main-text">Pontifique seu link para o mundo todo</div>
-
-<input id="linkInput" type="text" placeholder="Cole seu link aqui (https://...)">
-<button class="action-button" onclick="gerar()">GERAR PONTE LINKS</button>
-
-<div id="res" class="result-box">
-<span id="shortLink"></span>
-<button class="copy-button" onclick="copiaShort()">Copiar</button>
-</div>
-
-<button class="secondary-button" onclick="verPrevia()">VER PRÉVIA</button>
-<button class="secondary-button" onclick="pix('67.531.029/0001-70','PIX Brasil CNPJ copiado!')">Contribuir via Pix</button>
-<button class="secondary-button" onclick="openM('mDolar')">Contribuir via Inter - Dólar USA</button>
-<button class="secondary-button" onclick="openM('mEuro')">Contribuir via Inter - Euro</button>
-
-<div id="previaBox" class="modal-box" style="display:none;margin-top:12px">
-<b>PRÉVIA SEGURA</b><br><br>
-Destino: <span id="pDestino" style="word-break:break-all;color:#d4af37"></span><br><br>
-Cliques neste aparelho: <span id="pCliques">0</span><br>
-Origem do clique: <span id="pOrigem"></span><br><br>
-<a id="pIr" href="#" target="_blank"><button class="action-button">IR PARA DESTINO</button></a>
-</div>
-
-<!-- MODAIS -->
-<div id="mSobre" class="modal" onclick="closeM('mSobre')"><div class="modal-box">
-<b>Saiba tudo sobre o PonteLinks</b><br><br>
-O PonteLinks cria links curtos tipo <b>pontelinks.com/p/xxxxx</b> que mostram a prévia do destino antes de abrir. Isso te protege de golpes.<br><br>
-<b>Como funciona:</b> 1) Cole o link 2) Gere 3) Compartilhe. Quem receber clica em /p/xxxxx, vê pra onde vai e de onde veio o clique, e decide se continua.<br><br>
-100% gratuito, sem rastrear seus dados.<br><br>
-<button class="secondary-button" onclick="closeM('mSobre')">Fechar</button>
-</div></div>
-
-<div id="mApp" class="modal" onclick="closeM('mApp')"><div class="modal-box">
-<b>Baixar Aplicativo</b><br><br>
-App Android em desenvolvimento. Por enquanto use o site, ele já funciona como app. Salve na tela inicial do celular.<br><br>
-Em breve na Play Store.<br><br>
-<button class="secondary-button" onclick="closeM('mApp')">Fechar</button>
-</div></div>
-
-<div id="mDolar" class="modal" onclick="closeM('mDolar')"><div class="modal-box">
-<b>Contribuir em Dólar - USA</b><br><br>
-Banco Inter Global Account<br>
-Titular: Leonard R. Gram<br>
-CNPJ PIX: 67.531.029/0001-70<br><br>
-Quem está fora do Brasil pode fazer Wire com o IBAN do Inter ou enviar via Pix internacional usando a chave CNPJ.<br><br>
-<button class="action-button" onclick="pix('67.531.029/0001-70','Chave Dólar copiada!')">COPIAR CHAVE</button>
-<button class="secondary-button" onclick="closeM('mDolar')">Fechar</button>
-</div></div>
-
-<div id="mEuro" class="modal" onclick="closeM('mEuro')"><div class="modal-box">
-<b>Contribuir em Euro</b><br><br>
-Banco Inter Euro Account<br>
-Titular: Leonard R. Gram<br>
-CNPJ PIX: 67.531.029/0001-70<br><br>
-Para quem está na Europa, use transferência SEPA para conta Inter com a chave CNPJ.<br><br>
-<button class="action-button" onclick="pix('67.531.029/0001-70','Chave Euro copiada!')">COPIAR CHAVE</button>
-<button class="secondary-button" onclick="closeM('mEuro')">Fechar</button>
-</div></div>
-
-<footer><p class="small">Cloudflare • pontelinks.com - Links com prévia segura</p><p class="small">PIX: 67.531.029/0001-70</p></footer>
-
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Pontelinks</title>
+<style>body{font-family:sans-serif;background:#000;color:#fff;text-align:center;margin:0;padding:20px}.nav{display:flex;justify-content:space-between;margin-bottom:20px}.nav a{color:#d4af37;text-decoration:none;font-size:14px;cursor:pointer}img{max-width:85%;margin:15px 0;border-radius:12px}input{width:100%;padding:15px;border-radius:8px;border:1px solid #d4af37;background:#111;color:#fff;box-sizing:border-box;margin-bottom:10px}.btn{width:100%;padding:15px;border-radius:8px;border:none;font-weight:bold;cursor:pointer;margin-bottom:10px}.gold{background:#d4af37;color:#000}.white{background:#fff;color:#000}#res{display:none;padding:12px;border:1px dashed #d4af37;border-radius:8px;background:#111;margin-bottom:10px;word-break:break-all}#previa{display:none;background:#111;border:1px solid #333;border-radius:12px;padding:15px;margin-top:10px;text-align:left}</style></head><body>
+<div class=nav><a onclick="alert('App em breve! Por enquanto use o site e salve na tela inicial.')">Baixar Aplicativo</a><a onclick="alert('PonteLinks cria links pontelinks.com/p/xxxxx com previa segura. Voce cola o link, gera, e quem receber ve pra onde vai antes de clicar. Protege de golpe. Pix: 67.531.029/0001-70')">Saiba tudo sobre</a></div>
+<img src="arvore.jpg"><div style="font-size:22px;margin-bottom:15px">Pontifique seu link para o mundo todo</div>
+<input id="u" placeholder="Cole seu link aqui https://...">
+<button class="btn gold" onclick="G()">GERAR PONTE LINKS</button>
+<div id="res"><span id="s"></span><br><br><button class="btn gold" style="width:auto;padding:8px 20px" onclick="C()">Copiar</button></div>
+<button class="btn white" onclick="P()">VER PREVIA</button>
+<button class="btn white" onclick="navigator.clipboard.writeText('67.531.029/0001-70');alert('PIX Brasil copiado! 67.531.029/0001-70')">Contribuir via Pix</button>
+<button class="btn white" onclick="alert('Inter Dolar/Euro - Use PIX CNPJ: 67.531.029/0001-70 - Titular Leonard R Gram - Funciona para quem esta fora do Brasil via Pix internacional')">Contribuir via Inter - Dolar / Euro</button>
+<div id="previa"></div>
+<footer style="margin-top:20px;font-size:11px;color:#666">Cloudflare - Pix 67.531.029/0001-70</footer>
 <script>
-let lastId='', lastUrl='';
-function b64u(s){return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'')}
-function b64d(s){try{return decodeURIComponent(escape(atob(s.replace(/-/g,'+').replace(/_/g,'/'))))}catch(e){return null}}
-function gerar(){
-let u=document.getElementById('linkInput').value.trim();
-if(!u.startsWith('http')){alert('Cole o link completo com https://');return}
-lastUrl=u; lastId=b64u(u).slice(0,22);
-let db=JSON.parse(localStorage.getItem('pl')||'{}'); db[lastId]=u; localStorage.setItem('pl',JSON.stringify(db));
-let short=location.origin+'/p/'+lastId;
-document.getElementById('shortLink').innerText=short;
-document.getElementById('res').style.display='flex';
-copia(short);
-}
-function copia(t){navigator.clipboard.writeText(t).then(()=>{}); }
-function pix(chave,msg){navigator.clipboard.writeText(chave); alert(msg+'\n'+chave)}
-function copiaShort(){let t=document.getElementById('shortLink').innerText; pix(t,'Link copiado!')}
-function verPrevia(){
-if(!lastId){alert('Gere um link primeiro');return}
-let dest=lastUrl;
-let c=localStorage.getItem('c_'+lastId)||0;
-document.getElementById('pDestino').innerText=dest;
-document.getElementById('pCliques').innerText=c;
-document.getElementById('pOrigem').innerText=document.referrer||'Direto / pontelinks.com';
-document.getElementById('pIr').href=dest;
-document.getElementById('previaBox').style.display='block';
-window
+let ID='',URL='';
+function G(){let v=document.getElementById('u').value.trim();if(!v.startsWith('http')){alert('Cole com https://');return}URL=v;ID=btoa(v).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'').slice(0,18);let short=location.origin+'/p/'+ID;document.getElementById('s').innerText=short;document.getElementById('res').style.display='block';navigator.clipboard.writeText(short);let db=JSON.parse(localStorage.getItem('pl')||'{}');db[ID]=v;localStorage.setItem('pl',JSON.stringify(db));alert('Link gerado e COPIADO: '+short)}
+function C(){navigator.clipboard.writeText(document.getElementById('s').innerText);alert('Copiado!')}
+function P(){if(!ID){alert('Gere primeiro');return}let c=localStorage.getItem('c_'+ID)||0;document.getElementById('previa').style.display='block';document.getElementById('previa').innerHTML='<b>PREVIA SEGURA</b><br><br>Destino: <b style=color:#d4af37;word-break:break-all>'+URL+'</b><br><br>Cliques aqui: '+c+'<br>Veio de: '+(document.referrer||'pontelinks.com')+'<br><br><a href=\''+URL+'\' target=_blank><button class=btn gold>IR PARA DESTINO</button></a>';window.scrollTo(0,9999)}
+</script></body></html>
