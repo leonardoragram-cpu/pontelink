@@ -6,113 +6,52 @@
 <title>PONTE LINKS</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#000;display:flex;justify-content:center;font-family:Inter,Arial,sans-serif}
-.fundo{
-width:100%;max-width:420px;min-height:100vh;
-background:#0a0a0a url('arvore.png') no-repeat bottom center;
-background-size:110% auto;
-padding:18px 16px 40px
-}
-.logo{color:#e8c97a;text-align:center;font-size:30px;letter-spacing:5px;margin:14px 0 6px;font-weight:300}
-.sub{color:#ccc;text-align:center;margin-bottom:18px;font-size:14px;letter-spacing:1px}
-.input-wrap{
-border:1.8px solid #d9b45a;border-radius:22px;padding:14px;
-background:#151515;display:flex;gap:8px;margin-bottom:16px;align-items:center
-}
-.input-wrap span{font-size:18px}
-.input-wrap input{flex:1;background:transparent;border:none;color:#fff;outline:none;font-size:15px}
-.btn-gold{
-width:100%;background:#000;border:1.8px solid #d9b45a;border-radius:999px;
-padding:16px;color:#e8c97a;font-weight:900;font-size:17px;margin-bottom:16px;cursor:pointer;
-box-shadow:0 0 12px rgba(217,180,90,0.2)
-}
-.box-dourado{
-border:1.8px dashed #d9b45a;border-radius:18px;background:#cbb86a;
-padding:18px;text-align:center;margin-bottom:16px
-}
-.box-dourado b{font-size:17px;color:#000;display:block;line-height:1.4;word-break:break-all}
-.acoes{display:flex;gap:10px;justify-content:center;margin-top:14px}
-.acoes button{
-background:#000;border:1.5px solid #d9b45a;color:#e8c97a;
-border-radius:999px;padding:8px 20px;font-weight:700;cursor:pointer
-}
-.btn-preto{
-width:100%;background:#000;border:1.8px solid #d9b45a;border-radius:999px;
-padding:14px;color:#e8c97a;font-weight:700;margin-bottom:14px;cursor:pointer
-}
-.box-branco{box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-.contrib a{transition:0.2s}
-.contrib a:active{transform:scale(0.98)}
-.cf{box-shadow:0 0 10px rgba(217,180,90,0.15)}
-.tit-est{color:#fff;text-align:center;font-size:20px;font-weight:800;margin:20px 0 14px}
-.stats{display:flex;gap:12px;margin-bottom:20px}
+body{margin:0;background:#000;display:flex;justify-content:center;font-family:Inter,Arial}
+.fundo{width:100%;max-width:420px;min-height:100vh;background:#0a0a0a url('arvore.png') no-repeat bottom center;background-size:110% auto;padding:18px 16px 30px}
+.logo{color:#e8c97a;text-align:center;font-size:28px;letter-spacing:4px;margin:10px 0}
+.sub{color:#ddd;text-align:center;margin-bottom:14px}
+.input-wrap{border:1.8px solid #d9b45a;border-radius:22px;padding:14px;background:#151515;display:flex;gap:8px;margin-bottom:14px}
+.input-wrap input{flex:1;background:transparent;border:none;color:#fff;outline:none}
+.btn-gold{width:100%;background:#000;border:1.8px solid #d9b45a;border-radius:999px;padding:16px;color:#e8c97a;font-weight:900;font-size:17px;margin-bottom:14px}
+.box-dourado{border:1.8px dashed #d9b45a;border-radius:18px;background:#cbb86a;padding:18px;text-align:center;margin-bottom:14px}
+.box-dourado b{font-size:17px;color:#000;word-break:break-all}
+.acoes{display:flex;gap:10px;justify-content:center;margin-top:12px}
+.acoes button{background:#000;border:1.5px solid #d9b45a;color:#fff;border-radius:999px;padding:8px 18px;font-weight:700}
+.btn-preto{width:100%;background:#000;border:1.8px solid #d9b45a;border-radius:999px;padding:14px;color:#e8c97a;font-weight:700;margin-bottom:12px}
+.tit-est{color:#fff;text-align:center;font-size:20px;font-weight:800;margin:18px 0 14px}
+.stats{display:flex;gap:12px}
 .stat{flex:1;background:#ececec;border-radius:18px;padding:18px;text-align:center}
-.stat b{font-size:30px;display:block;color:#000}
-.stat span{font-size:13px;color:#444}
+.stat b{font-size:32px;display:block}
 </style>
 </head>
 <body>
 <div class="fundo">
-
 <div class="logo">PONTE LINKS</div>
 <div class="sub">Pontifique seu link para o mundo todo</div>
-
-<div class="input-wrap"><span>🔗</span><input id="linkInput" placeholder="Cole seu link aqui (https://...)"></div>
+<div class="input-wrap">🔗 <input id="linkInput" placeholder="Cole seu link aqui"></div>
 <button class="btn-gold" onclick="gerar()">✨ GERAR PONTE LINKS</button>
+<div class="box-dourado"><b id="res">SEU LINK PONTIFICADO VAI APARECER AQUI</b><div class="acoes"><button onclick="copiar()">COPIAR</button><button onclick="colar()">COLAR</button></div></div>
+<button class="btn-preto">📲 Baixar Aplicativo</button>
 
-<div class="box-dourado">
-<b id="resultado">SEU LINK PONTIFICADO VAI APARECER AQUI</b>
-<div class="acoes">
-<button onclick="copiar()">COPIAR</button>
-<button onclick="colar()">COLAR</button>
-</div>
-</div>
-
-<button class="btn-preto" onclick="baixar()">📲 Baixar Aplicativo</button>
-
-<div class="box-branco" style="background:#ececec;border-radius:18px;padding:18px;text-align:center;margin-bottom:12px;color:#222;font-size:15px;line-height:1.4">
+<div style="background:#ececec;border-radius:18px;padding:18px;text-align:center;margin-bottom:12px;color:#222;font-size:15px;line-height:1.4">
 Mesmo que a sua hospedagem seja sempre gratuita, considere fazer uma contribuição mensal, se estiver ao seu alcance.
 </div>
 
-<div class="contrib" style="margin-bottom:14px">
+<div style="margin-bottom:14px">
 <a href="#" onclick="navigator.clipboard.writeText('67531029000170');alert('CNPJ 67.531.029/0001-70 copiado! Pix Brasil - Banco Inter');return false" style="color:#000;background:#fff;text-decoration:none;display:block;padding:14px;border-radius:999px;margin-bottom:8px;text-align:center;font-weight:800">💛 Contribuir via Pix</a>
-<a href="#" onclick="navigator.clipboard.writeText('67531029000170');alert('CNPJ copiado! Dólar USA - Banco Inter - SWIFT: BINTBR31 - CNPJ: 67.531.029/0001-70');return false" style="color:#e8c97a;background:#000;border:1.8px solid #d9b45a;text-decoration:none;display:block;padding:14px;border-radius:999px;margin-bottom:8px;text-align:center;font-weight:700">💵 Contribuir via Inter - Dólar USA</a>
-<a href="#" onclick="navigator.clipboard.writeText('67531029000170');alert('CNPJ copiado! Euro - Banco Inter - SWIFT: BINTBR31 - CNPJ: 67.531.029/0001-70');return false" style="color:#e8c97a;background:#000;border:1.8px solid #d9b45a;text-decoration:none;display:block;padding:14px;border-radius:999px;text-align:center;font-weight:700">💶 Contribuir via Inter - Euro</a>
+<a href="#" onclick="navigator.clipboard.writeText('67531029000170');alert('CNPJ copiado! Dólar USA - Banco Inter - SWIFT: BINTBR31');return false" style="color:#e8c97a;background:#000;border:1.8px solid #d9b45a;text-decoration:none;display:block;padding:14px;border-radius:999px;margin-bottom:8px;text-align:center;font-weight:700">💵 Contribuir via Inter - Dólar USA</a>
+<a href="#" onclick="navigator.clipboard.writeText('67531029000170');alert('CNPJ copiado! Euro - Banco Inter - SWIFT: BINTBR31');return false" style="color:#e8c97a;background:#000;border:1.8px solid #d9b45a;text-decoration:none;display:block;padding:14px;border-radius:999px;text-align:center;font-weight:700">💶 Contribuir via Inter - Euro</a>
 <div style="text-align:center;color:#888;font-size:10px;margin-top:8px">Mesmo CNPJ para os 3: 67.531.029/0001-70 | Banco Inter | SWIFT: BINTBR31</div>
 </div>
 
-<div class="cf" style="width:100%;border:1.8px solid #d9b45a;background:#000;color:#d9b45a;border-radius:999px;padding:14px;text-align:center;font-size:13px;font-weight:700;margin-bottom:18px">🛡️ Cloudflare de Segurança Ativo - Protegido por Cloudflare®</div>
-
+<div style="width:100%;border:1.8px solid #d9b45a;background:#000;color:#d9b45a;border-radius:999px;padding:14px;text-align:center;font-size:13px;font-weight:700;margin-bottom:18px">🛡️ Cloudflare de Segurança Ativo - Protegido por Cloudflare®</div>
 <div class="tit-est">📊 Estatísticas</div>
-<div class="stats">
-<div class="stat"><b>1.2k</b><span>Links Pontificados</span></div>
-<div class="stat"><b>8.5k</b><span>Cliques Totais</span></div>
+<div class="stats"><div class="stat"><b>1.2k</b><br>Links</div><div class="stat"><b>8.5k</b><br>Cliques</div></div>
 </div>
-
-</div>
-
 <script>
-function gerar(){
-let l=document.getElementById('linkInput').value.trim();
-if(!l){alert('Cole um link primeiro!');return}
-if(!l.startsWith('http')){l='https://'+l}
-let ponte='https://pontelinks.com.br/#'+btoa(l).substring(0,12);
-document.getElementById('resultado').innerText=ponte;
-navigator.clipboard.writeText(ponte);
-}
-function copiar(){
-let t=document.getElementById('resultado').innerText;
-if(t.includes('VAI APARECER')){alert('Gere um link primeiro!');return}
-navigator.clipboard.writeText(t);alert('Copiado: '+t);
-}
-async function colar(){
-try{
-let txt=await navigator.clipboard.readText();
-document.getElementById('linkInput').value=txt;
-}catch{alert('Cole manualmente com Ctrl+V')}
-}
-function baixar(){alert('App em breve na Play Store!');}
+function gerar(){let l=document.getElementById('linkInput').value.trim();if(!l){alert('Cole um link!');return}if(!l.startsWith('http'))l='https://'+l;let p='https://pontelinks.com.br/#'+btoa(l).substring(0,12);document.getElementById('res').innerText=p;navigator.clipboard.writeText(p);}
+function copiar(){let t=document.getElementById('res').innerText;if(t.includes('APARECER')){alert('Gere primeiro!');return}navigator.clipboard.writeText(t);alert('Copiado: '+t);}
+async function colar(){try{let t=await navigator.clipboard.readText();document.getElementById('linkInput').value=t;}catch{alert('Cole com Ctrl+V')}}
 </script>
-
 </body>
 </html>
