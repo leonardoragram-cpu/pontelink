@@ -1,0 +1,15 @@
+{
+  "name": "Ponte Links",
+  "short_name": "PonteLinks",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ffcc4a",
+  "icons": [
+    {
+      "src": "arvore.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
