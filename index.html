@@ -3,25 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ponte Links - Em Manutenção</title>
+<title>PONTE LINKS</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0f0f12;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:Inter,system-ui,sans-serif;padding:20px}
-.card{background:#131316;border:1px solid #222;border-radius:28px;padding:32px 24px;max-width:400px;width:100%;text-align:center}
-h1{color:#ffcc4a;font-size:28px;margin-bottom:12px}
-p{color:#fff;font-size:16px;line-height:1.5;margin-bottom:8px}
-.small{color:#888;font-size:13px;margin-top:16px}
-.logo{width:80px;margin-bottom:16px;border-radius:12px}
+*{box-sizing:border-box}
+body{margin:0;background:#000;display:flex;justify-content:center;font-family:Inter,Arial}
+.fundo{width:100%;max-width:420px;min-height:100vh;background:#0a0a0a url('arvore.png') no-repeat bottom center;background-size:110% auto;padding:18px 16px 30px}
+.logo{color:#e8c97a;text-align:center;font-size:28px;letter-spacing:4px;margin:10px 0}
+.sub{color:#ddd;text-align:center;margin-bottom:14px}
+.input{border:1px solid #d9b45a;border-radius:22px;padding:14px;background:#151515;display:flex;gap:8px;margin-bottom:14px}
+.input input{flex:1;background:transparent;border:none;color:#fff;outline:none}
+.btn-gold{width:100%;background:#000;border:1.8px solid #d9b45a;border-radius:999px;padding:16px;color:#e8c97a;font-weight:900;font-size:17px;margin-bottom:14px}
+.box-dourado{border:1.8px dashed #d9b45a;border-radius:18px;background:#cbb86a;padding:18px;text-align:center;margin-bottom:14px}
+.box-dourado b{font-size:18px;color:#000}
+.acoes{display:flex;gap:10px;justify-content:center;margin-top:12px}
+.acoes button{background:#000;border:1.5px solid #d9b45a;color:#fff;border-radius:999px;padding:8px 18px;font-weight:700}
+.btn-preto{width:100%;background:#000;border:1.8px solid #d9b45a;border-radius:999px;padding:14px;color:#e8c97a;font-weight:700;margin-bottom:12px}
+.tit-est{color:#fff;text-align:center;font-size:20px;font-weight:800;margin:18px 0 14px}
+.stats{display:flex;gap:12px}
+.stat{flex:1;background:#ececec;border-radius:18px;padding:18px;text-align:center}
+.stat b{font-size:32px;display:block}
 </style>
 </head>
 <body>
-<div class="card">
-<img src="arvore.jpg" class="logo" alt="Ponte Links">
-<h1>Em Manutenção</h1>
-<p>Estamos melhorando a Ponte Links para você.</p>
-<p>O gerador de links com preview de imagem está sendo corrigido.</p>
-<p style="margin-top:16px;color:#ffcc4a;font-weight:800">Voltamos em breve.</p>
-<div class="small">pontelinks.com.br<br>Protected by Cloudflare</div>
+<div class="fundo">
+<div class="logo">PONTE LINKS</div>
+<div class="sub">Pontifique seu link para o mundo todo</div>
+<div class="input">🔗 <input placeholder="Cole seu link aqui"></div>
+<button class="btn-gold">✨ GERAR PONTE LINKS</button>
+<div class="box-dourado"><b>SEU LINK PONTIFICADO VAI APARECER AQUI</b><div class="acoes"><button>COPIAR</button><button>COLAR</button></div></div>
+<button class="btn-preto">📲 Baixar Aplicativo</button>
+
+<!-- SEU BLOCO PEQUENINHO JÁ DENTRO DO GRANDE -->
+<div class="box-branco" style="background:#ececec;border-radius:18px;padding:18px;text-align:center;margin-bottom:12px;color:#222;font-size:15px;line-height:1.4">
+Mesmo que a sua hospedagem seja sempre gratuita, considere fazer uma contribuição mensal, se estiver ao seu alcance.
+</div>
+
+<div class="contrib" style="margin-bottom:14px">
+<a href="#" onclick="navigator.clipboard.writeText('67531029000170');alert('CNPJ 67.531.029/0001-70 copiado! Pix Brasil - Banco Inter');return false" style="color:#000;background:#fff;text-decoration:none;display:block;padding:14px;border-radius:999px;margin-bottom:8px;text-align:center;font-weight:800">💛 Contribuir via Pix</a>
+<a href="#" onclick="navigator.clipboard.writeText('67531029000170');alert('CNPJ copiado! Dólar USA - Banco Inter - SWIFT: BINTBR31 - CNPJ: 67.531.029/0001-70');return false" style="color:#e8c97a;background:#000;border:1.8px solid #d9b45a;text-decoration:none;display:block;padding:14px;border-radius:999px;margin-bottom:8px;text-align:center;font-weight:700">💵 Contribuir via Inter - Dólar USA</a>
+<a href="#" onclick="navigator.clipboard.writeText('67531029000170');alert('CNPJ copiado! Euro - Banco Inter - SWIFT: BINTBR31 - CNPJ: 67.531.029/0001-70');return false" style="color:#e8c97a;background:#000;border:1.8px solid #d9b45a;text-decoration:none;display:block;padding:14px;border-radius:999px;text-align:center;font-weight:700">💶 Contribuir via Inter - Euro</a>
+<div style="text-align:center;color:#888;font-size:10px;margin-top:8px">Mesmo CNPJ para os 3: 67.531.029/0001-70 | Banco Inter | SWIFT: BINTBR31</div>
+</div>
+
+<div class="cf" style="width:100%;border:1.8px solid #d9b45a;background:#000;color:#d9b45a;border-radius:999px;padding:14px;text-align:center;font-size:13px;font-weight:700;margin-bottom:18px">🛡️ Cloudflare de Segurança Ativo - Protegido por Cloudflare®</div>
+<div class="tit-est">📊 Estatísticas</div>
+<div class="stats"><div class="stat"><b>1.2k</b><br>Links</div><div class="stat"><b>8.5k</b><br>Cliques</div></div>
 </div>
 </body>
 </html>
