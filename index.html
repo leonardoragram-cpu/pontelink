@@ -1,98 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PonteLinks - Pontifique seu link para todos</title>
-<meta name="theme-color" content="#000000">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PonteLinks</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,Segoe UI,Roboto,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif}
 body{background:#000;color:#fff;display:flex;justify-content:center}
-.wrap{width:100%;max-width:480px;background:#000;min-height:100vh;padding:10px 14px 0;display:flex;flex-direction:column}
-.logo{text-align:center;padding:12px 0 8px}
-.logo img{width:80px;height:80px;display:block;margin:0 auto;object-fit:contain}
-h1{text-align:center;font-size:40px;font-weight:300}
-.gold{color:#e8c05a} .silver{color:#c0c0c0}
-.sub{text-align:center;color:#ccc;font-size:14px;margin:8px 0 18px}
-.field{display:flex;gap:8px;flex-direction:column}
-.field input{width:100%;height:52px;background:#0f0f12;border:1px solid #d4a01755;border-radius:12px;padding:0 14px;color:#fff;font-size:16px;outline:none}
-.btn-gold{width:100%;height:52px;border:none;border-radius:12px;background:linear-gradient(180deg,#fde68a,#d4a017);color:#000;font-weight:900;font-size:14px;cursor:pointer}
-.label{text-align:center;font-size:10px;font-weight:800;color:#aaa;margin:18px 0 10px;letter-spacing:.8px}
-.result{min-height:52px;background:#0a0a0a;border:1px dashed #333;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#666;font-weight:700;font-size:13px;padding:8px;word-break:break-all}
+.wrap{width:100%;max-width:480px;background:#000;min-height:100vh;padding:14px 14px 0;display:flex;flex-direction:column}
+.logo{text-align:center;padding:10px 0}
+.logo img{width:80px;height:80px;display:block;margin:0 auto}
+h1{text-align:center;font-size:42px;font-weight:300}
+.gold{color:#e8c05a}.silver{color:#c0c0c0}
+.sub{text-align:center;color:#ccc;font-size:14px;margin:6px 0 16px}
+.field input{width:100%;height:52px;background:#0f0f12;border:1px solid #d4a01755;border-radius:12px;padding:0 14px;color:#fff;font-size:16px}
+.btn-gold{width:100%;height:52px;margin-top:10px;border:none;border-radius:12px;background:linear-gradient(180deg,#fde68a,#d4a017);color:#000;font-weight:900;cursor:pointer}
+.label{text-align:center;font-size:10px;color:#aaa;margin:18px 0 10px;letter-spacing:.8px}
+.result{min-height:52px;background:#0a0a0a;border:1px dashed #333;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#666;font-weight:700;padding:8px;word-break:break-all}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
-.btn{height:52px;border-radius:12px;border:1px solid #555;background:#111;color:#fff;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn{height:52px;border-radius:12px;border:1px solid #555;background:#111;color:#fff;font-weight:700;font-size:13px;cursor:pointer}
 .btn.gold{border-color:#5a4a1a;color:#e8c05a}
 .apoie{text-align:center;color:#e8c05a;font-weight:800;margin:16px 0 10px;font-size:13px}
 .donate{display:flex;flex-direction:column;gap:8px;align-items:center}
 .donate button{width:260px;height:44px;border-radius:10px;background:#111;border:1px solid #5a4a1a;color:#e8c05a;font-weight:700;font-size:12px;cursor:pointer}
-.footer{margin-top:auto;border-top:1px solid #111;padding:12px 6px;text-align:center;font-size:11px;color:#888;display:flex;flex-direction:column;gap:8px;align-items:center}
-.cnpj{display:flex;gap:10px;align-items:center}
-.qr{width:54px;height:54px;background:#fff;padding:2px;border-radius:4px}
+.footer{margin-top:auto;border-top:1px solid #111;padding:12px 6px;text-align:center;font-size:11px;color:#888}
+.qr{width:54px;height:54px;background:#fff;padding:2px;border-radius:4px;margin-top:6px}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="logo"><img src="arvore.png" alt="PonteLinks"></div>
+<div class="logo"><img src="arvore.png" alt="PonteLinks" onerror="this.style.display='none'"></div>
 <h1><span class="silver">Ponte</span> <b class="gold">Links</b></h1>
 <div class="sub">Pontifique seu link para todos.</div>
-
-<div class="field">
-<input id="link" placeholder="Cole seu link aqui" type="url">
-<button class="btn-gold" onclick="gerar()">GERAR PONTE LINKS</button>
-</div>
-
+<div class="field"><input id="link" placeholder="Cole seu link aqui"><button class="btn-gold" onclick="gerar()">GERAR PONTE LINKS</button></div>
 <div class="label">SEU LINK PONTIFICADO VAI APARECER AQUI</div>
 <div class="result" id="res">pontelinks.com.br/p/...</div>
-
 <div class="grid">
 <button class="btn" onclick="copiar()">COPIAR</button>
 <button class="btn gold" onclick="previa()">PRÉVIA</button>
 <button class="btn" onclick="baixar()">Baixar Aplicativo</button>
 <button class="btn gold" onclick="sobre()">Saiba tudo sobre</button>
 </div>
-
 <div class="apoie">Apoie o Projeto</div>
 <div class="donate">
-<button onclick="copiarPix()">Contribuir via Pix - CNPJ</button>
+<button onclick="copiarPix()">Contribuir via Pix - CNPJ 67.531.029/0001-70</button>
 <button onclick="copiarPix()">Contribuir via Inter Dolar</button>
 <button onclick="copiarPix()">Contribuir via Inter Euro</button>
 </div>
-
-<div class="footer">
-<div class="cnpj">
-<span id="cnpj-text">CNPJ: 67.531.029/0001-70</span>
-<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=00020126580014BR.GOV.BCB.PIX0136675310290001705204000053039865802BR5925PONTE LINKS LTDA6009RIO DE JANEIRO62070503***6304" alt="QR">
+<div class="footer">CNPJ: 67.531.029/0001-70 - Cloudflare Ativo<br><img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=00020126580014BR.GOV.BCB.PIX0136675310290001705204000053039865802BR5925PONTE LINKS LTDA6009RIO DE JANEIRO62070503***6304" alt="QR"></div>
 </div>
-<div>Cloudflare Ativo - Protegido</div>
-</div>
-</div>
-
 <script>
 let final="";
-const PIX_KEY = "67.531.029/0001-70";
-
-function gerar(){
- let v=document.getElementById('link').value.trim();
- if(!v){alert('Cole seu link');return}
- if(!v.startsWith('http')) v='https://'+v;
- final='https://pontelinks.com.br/p/'+Math.random().toString(36).slice(2,6);
- document.getElementById('res').textContent=final;
- document.getElementById('res').style.color='#fff';
-}
-function copiar(){
- if(!final){alert('Primeiro clique em GERAR PONTE LINKS');return}
- navigator.clipboard.writeText(final);alert('Copiado: '+final)
-}
-function previa(){
- if(!final){alert('Primeiro clique em GERAR PONTE LINKS para criar a prévia');return}
- window.open(final,'_blank')
-}
-function baixar(){alert('Para instalar como App:\nNo Chrome toque em ⋮ > Adicionar à tela inicial > Instalar')}
-function sobre(){alert('PonteLinks - Pontifique seu link para todos.\n\nCNPJ: 67.531.029/0001-70\nProjeto Brasileiro\nCloudflare Protegido')}
-function copiarPix(){
- navigator.clipboard.writeText(PIX_KEY);
- alert('Chave Pix copiada!\n\nCNPJ: '+PIX_KEY+'\n\nCole no seu banco para contribuir. Muito obrigado por apoiar o PonteLinks!');
-}
+const PIX="67.531.029/0001-70";
+function gerar(){let v=document.getElementById('link').value.trim();if(!v){alert('Cole seu link');return}if(!v.startsWith('http'))v='https://'+v;final='https://pontelinks.com.br/p/'+Math.random().toString(36).slice(2,6);document.getElementById('res').textContent=final;document.getElementById('res').style.color='#fff';}
+function copiar(){if(!final){alert('Passo 1: Cole seu link e clique em GERAR PONTE LINKS');return}navigator.clipboard.writeText(final);alert('Copiado: '+final)}
+function previa(){if(!final){alert('Passo 1: Cole seu link e clique em GERAR PONTE LINKS');return}window.open(final,'_blank')}
+function baixar(){alert('Para instalar como App:\nNo Chrome: ⋮ > Adicionar à tela inicial > Instalar')}
+function sobre(){alert('PonteLinks - CNPJ 67.531.029/0001-70\nProjeto Brasileiro - Cloudflare Protegido')}
+function copiarPix(){navigator.clipboard.writeText(PIX);alert('PIX COPIADO!\n\nCNPJ: '+PIX+'\nCole no seu banco. Obrigado por apoiar!')}
 </script>
 </body>
 </html>
