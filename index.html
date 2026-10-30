@@ -1,107 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PonteLinks</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,sans-serif}
-body{background:#000;color:#fff;display:flex;justify-content:center}
-.wrap{width:100%;max-width:480px;background:#000;min-height:100vh;padding:14px 14px 0;display:flex;flex-direction:column}
-.flags{display:flex;justify-content:center;gap:14px;padding:10px 0}
-.flags button{font-size:28px;background:#111;border:1px solid #333;border-radius:10px;width:56px;height:42px;cursor:pointer}
-.logo{text-align:center;padding:6px 0 10px}
-.logo img{width:180px;height:180px;object-fit:contain;display:block;margin:0 auto}
-h1{text-align:center;font-size:42px;font-weight:300;line-height:1}
-.gold{color:#e8c05a}.silver{color:#c0c0c0}
-.sub{text-align:center;color:#ccc;font-size:14px;margin:8px 0 18px}
-.field input{width:100%;height:54px;background:#0f0f12;border:1px solid #d4a01766;border-radius:12px;padding:0 14px;color:#fff;font-size:16px;outline:none}
-.btn-gold{width:100%;height:54px;margin-top:10px;border:none;border-radius:12px;background:linear-gradient(180deg,#fde68a,#d4a017);color:#000;font-weight:900;cursor:pointer;font-size:15px}
-.label{text-align:center;font-size:10px;color:#aaa;margin:18px 0 10px;letter-spacing:.8px}
-.result{min-height:56px;background:#0a0a0a;border:1px dashed #333;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#666;font-weight:700;padding:8px;word-break:break-all;text-align:center}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
-.btn{height:52px;border-radius:12px;border:1px solid #555;background:#111;color:#fff;font-weight:700;font-size:12px;cursor:pointer}
-.btn.gold{border-color:#5a4a1a;color:#e8c05a}
-.apoie{text-align:center;color:#e8c05a;font-weight:800;margin:18px 0 10px;font-size:13px}
-.donate{display:flex;flex-direction:column;gap:8px;align-items:center}
-.donate button{width:300px;height:46px;border-radius:10px;background:#111;border:1px solid #5a4a1a;color:#e8c05a;font-weight:700;font-size:12px;cursor:pointer}
-.footer{margin-top:auto;border-top:1px solid #111;padding:14px 6px;text-align:center;font-size:11px;color:#888;line-height:1.4}
-.qr{width:64px;height:64px;background:#fff;padding:3px;border-radius:6px;margin:8px auto 0;display:block}
-.modal{position:fixed;inset:0;background:#000000f0;display:none;align-items:flex-start;justify-content:center;z-index:99;padding:16px;overflow:auto}
-.modal.open{display:flex}
-.box{background:#111;border:1px solid #d4a01755;border-radius:16px;max-width:520px;width:100%;padding:20px;margin:auto}
-.box h2{color:#e8c05a;font-size:20px;margin-bottom:12px;text-align:center}
-.box h3{color:#fff;font-size:14px;margin:14px 0 6px}
-.box p{font-size:13px;color:#ccc;line-height:1.6;margin-bottom:10px}
-.box img.thumb{width:100%;border-radius:12px;margin:10px 0;border:1px solid #333}
-.close{width:100%;height:46px;margin-top:10px;border:none;border-radius:10px;background:#222;color:#fff;font-weight:700;cursor:pointer}
-.link-preview{word-break:break-all;background:#000;padding:10px;border-radius:8px;border:1px solid #333;color:#e8c05a;font-size:13px;text-align:center;margin:8px 0}
-.pix-box{background:#000;border:1px dashed #d4a01777;border-radius:10px;padding:12px;text-align:center;margin:10px 0}
-</style>
-</head>
-<body>
-<div class="wrap">
-<div class="flags">
-<button onclick="setLang('pt')">🇧🇷</button>
-<button onclick="setLang('en')">🇺🇸</button>
-<button onclick="setLang('en')">🇪🇺</button>
-</div>
-<div class="logo"><img src="arvore.png" alt="PonteLinks"></div>
-<h1><span class="silver">Ponte</span> <b class="gold">Links</b></h1>
-<div class="sub" id="t-sub">Pontifique seu link para todos.</div>
-<div class="field"><input id="link" placeholder="Cole seu link aqui"><button class="btn-gold" id="t-gerar" onclick="gerar()">GERAR PONTE LINKS</button></div>
-<div class="label" id="t-label">SEU LINK PONTIFICADO VAI APARECER AQUI</div>
-<div class="result" id="res">pontelinks.com.br/p/...</div>
-<div class="grid">
-<button class="btn" id="t-copiar" onclick="copiar()">COPIAR</button>
-<button class="btn gold" id="t-previa" onclick="previa()">PRÉVIA</button>
-<button class="btn" id="t-baixar" onclick="baixar()">Baixar Aplicativo</button>
-<button class="btn gold" id="t-sobre" onclick="sobre()">Saiba tudo sobre</button>
-</div>
-<div class="apoie" id="t-apoie">Apoie o Projeto</div>
-<div class="donate">
-<button onclick="copiarPix()">🇧🇷 Contribuir via Pix - CNPJ 67.531.029/0001-70</button>
-<button onclick="copiarPix()">🇺🇸 Contribuir via Inter Dolar</button>
-<button onclick="copiarPix()">🇪🇺 Contribuir via Inter Euro</button>
-</div>
-<div class="footer">CNPJ: 67.531.029/0001-70 - Cloudflare Ativo<br>Projeto 100% Brasileiro<br><img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=00020126580014BR.GOV.BCB.PIX0136675310290001705204000053039865802BR5925PONTE%20LINKS%20LTDA6009RIO%20DE%20JANEIRO62070503***6304" alt="QR"></div>
-</div>
-<div class="modal" id="modalSobre" onclick="if(event.target==this)this.classList.remove('open')"><div class="box"><h2>Seja muito bem-vindo ao PonteLinks!</h2><p>Aqui você cola o link, clica em gerar e copia seu PonteLink para postar onde quiser.</p><button class="close" onclick="document.getElementById('modalSobre').classList.remove('open')">FECHAR</button></div></div>
-<div class="modal" id="modalPrevia" onclick="if(event.target==this)this.classList.remove('open')"><div class="box"><h2>Prévia do seu PonteLink</h2><div class="link-preview" id="prevLink">pontelinks.com.br/p/...</div><img id="prevImg" class="thumb" style="display:none"><div class="pix-box" id="p-stats"><span style="color:#e8c05a;font-weight:800">🔥 Link pronto para viralizar</span></div><button class="close" onclick="window.open(document.getElementById('prevLink').textContent,'_blank')">ABRIR LINK FINAL</button><button class="close" style="background:#000;border:1px solid #333;margin-top:8px" onclick="document.getElementById('modalPrevia').classList.remove('open')">FECHAR</button></div></div>
-<div class="modal" id="modalBaixar" onclick="if(event.target==this)this.classList.remove('open')"><div class="box"><h2>Baixar Aplicativo</h2><p><b>Android:</b> 3 pontinhos > Adicionar à tela inicial<br><br><b>iPhone:</b> Compartilhar > Adicionar à Tela de Início</p><button class="close" onclick="document.getElementById('modalBaixar').classList.remove('open')">FECHAR</button></div></div>
-<div class="modal" id="modalPix" onclick="if(event.target==this)this.classList.remove('open')"><div class="box" style="text-align:center"><h2>💛 Obrigado por apoiar! 💛</h2><div class="pix-box"><b style="color:#e8c05a;font-size:18px">67.531.029/0001-70</b></div><button class="close" onclick="document.getElementById('modalPix').classList.remove('open')">FECHAR COM ❤️</button></div></div>
-<script>
-let final="";let original="";const PIX="67.531.029/0001-70";let lang='pt';
-function getYouTubeId(url){
-  let m=url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&\?\/\s]{11})/);
-  return m?m[1]:null;
-}
-function gerar(){
-  let v=document.getElementById('link').value.trim();
-  if(!v){alert('Cole seu link');return}
-  if(!v.startsWith('http'))v='https://'+v;
-  original=v;
-  let yt=getYouTubeId(v);
-  if(yt){
-    final='https://pontelinks.com.br/p/'+yt;
-  } else {
-    final='https://pontelinks.com.br/p/'+btoa(v).replace(/=/g,'').slice(0,20);
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const path = url.pathname;
+
+    if (path.startsWith("/p/")) {
+      const id = path.replace("/p/", "").split("?")[0].split("/")[0];
+      const isYT = /^[a-zA-Z0-9_-]{11}$/.test(id);
+      let targetUrl = "";
+      let thumb = "https://pontelinks.com.br/arvore.png";
+      let title = "PonteLinks - Seus links em um só lugar";
+
+      if (isYT) {
+        targetUrl = `https://www.youtube.com/watch?v=${id}`;
+        thumb = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+        title = `Assista no YouTube - PonteLinks`;
+      } else {
+        try {
+          let b64 = id;
+          while (b64.length % 4) b64 += "=";
+          const decoded = atob(b64);
+          if(decoded.startsWith("http")) targetUrl = decoded;
+        } catch(e) {}
+      }
+
+      const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${title}</title>
+<meta property="og:image" content="${thumb}" />
+<meta property="og:title" content="${title}" />
+<meta property="og:description" content="Clique para abrir no PonteLinks" />
+<meta property="og:url" content="${url.href}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="${thumb}" />
+<meta http-equiv="refresh" content="1;url=${targetUrl}">
+<style>body{background:#000;color:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column}img{width:300px;border-radius:12px}a{color:#e8c05a}</style>
+</head><body><img src="${thumb}"><h1 style="margin:20px;color:#e8c05a">PonteLinks</h1><p>Redirecionando...</p><a href="${targetUrl}">${targetUrl}</a><script>setTimeout(()=>location.href="${targetUrl}",1200)</script></body></html>`;
+
+      return new Response(html, { headers: { "content-type": "text/html;charset=UTF-8", "cache-control": "no-cache" } });
+    }
+
+    let res = await env.ASSETS.fetch(request);
+    return res;
   }
-  document.getElementById('res').textContent=final;
-  document.getElementById('res').style.color='#fff';
 }
-function copiar(){ if(!final){alert('Gere o link primeiro');return} navigator.clipboard.writeText(final);alert('Copiado: '+final) }
-function previa(){
-  if(!final){alert('Gere o link primeiro');return}
-  document.getElementById('prevLink').textContent=final;
-  let img=document.getElementById('prevImg');
-  let yt=getYouTubeId(original);
-  if(yt){img.src='https://img.youtube.com/vi/'+yt+'/hqdefault.jpg';img.style.display='block';} else {img.style.display='none';}
-  document.getElementById('modalPrevia').classList.add('open');
-}
-function sobre(){document.getElementById('modalSobre').classList.add('open')}
-function baixar(){document.getElementById('modalBaixar').classList.add('open')}
-function copiarPix(){navigator.clipboard.writeText(PIX);document.getElementById('modalPix').classList.add('open');}
-function setLang(l){lang=l;}
-</script>
-</body>
-</html>
