@@ -53,15 +53,15 @@ h1{text-align:center;font-size:40px;font-weight:300}
 
 <div class="apoie">Apoie o Projeto</div>
 <div class="donate">
-<button onclick="alert('Pix em breve')">Contribuir via Pix</button>
-<button onclick="alert('Inter Dolar em breve')">Contribuir via Inter Dolar</button>
-<button onclick="alert('Inter Euro em breve')">Contribuir via Inter Euro</button>
+<button onclick="copiarPix()">Contribuir via Pix - CNPJ</button>
+<button onclick="copiarPix()">Contribuir via Inter Dolar</button>
+<button onclick="copiarPix()">Contribuir via Inter Euro</button>
 </div>
 
 <div class="footer">
 <div class="cnpj">
-<span>CNPJ: 67.531.029/0001-70</span>
-<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://pontelinks.com.br" alt="QR">
+<span id="cnpj-text">CNPJ: 67.531.029/0001-70</span>
+<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=00020126580014BR.GOV.BCB.PIX0136675310290001705204000053039865802BR5925PONTE LINKS LTDA6009RIO DE JANEIRO62070503***6304" alt="QR">
 </div>
 <div>Cloudflare Ativo - Protegido</div>
 </div>
@@ -69,6 +69,8 @@ h1{text-align:center;font-size:40px;font-weight:300}
 
 <script>
 let final="";
+const PIX_KEY = "67.531.029/0001-70";
+
 function gerar(){
  let v=document.getElementById('link').value.trim();
  if(!v){alert('Cole seu link');return}
@@ -77,10 +79,20 @@ function gerar(){
  document.getElementById('res').textContent=final;
  document.getElementById('res').style.color='#fff';
 }
-function copiar(){if(!final)return alert('Gere primeiro');navigator.clipboard.writeText(final);alert('Copiado: '+final)}
-function previa(){if(!final)return alert('Gere primeiro');window.open(final,'_blank')}
-function baixar(){alert('Para instalar como App: No Chrome toque em ⋮ > Adicionar à tela inicial')}
-function sobre(){window.scrollTo({top:9999,behavior:'smooth'})}
+function copiar(){
+ if(!final){alert('Primeiro clique em GERAR PONTE LINKS');return}
+ navigator.clipboard.writeText(final);alert('Copiado: '+final)
+}
+function previa(){
+ if(!final){alert('Primeiro clique em GERAR PONTE LINKS para criar a prévia');return}
+ window.open(final,'_blank')
+}
+function baixar(){alert('Para instalar como App:\nNo Chrome toque em ⋮ > Adicionar à tela inicial > Instalar')}
+function sobre(){alert('PonteLinks - Pontifique seu link para todos.\n\nCNPJ: 67.531.029/0001-70\nProjeto Brasileiro\nCloudflare Protegido')}
+function copiarPix(){
+ navigator.clipboard.writeText(PIX_KEY);
+ alert('Chave Pix copiada!\n\nCNPJ: '+PIX_KEY+'\n\nCole no seu banco para contribuir. Muito obrigado por apoiar o PonteLinks!');
+}
 </script>
 </body>
 </html>
